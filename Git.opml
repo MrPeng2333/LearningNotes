@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<opml version="1.0">
+	<head>
+		<dateCreated>Sun Oct 10 2021 20:33:51 GMT+0800 (中国标准时间)</dateCreated>
+		<dateModified>Sun Oct 10 2021 20:33:51 GMT+0800 (中国标准时间)</dateModified>
+	</head>
+	<body>
+		<outline text="Git">
+			<outline text="Git简介">
+				<outline text="Git诞生">
+					<outline text="Git是什么？">
+						<outline text="分布式版本控制系统"></outline>
+						<outline text="分布式：开发者可以提交到本地"></outline>
+					</outline>
+					<outline text="Git用什么语言开发的？">
+						<outline text="C语言"></outline>
+					</outline>
+				</outline>
+				<outline text="集中式VS分布式">
+					<outline text="集中式和分布式版本控制系统的区别？">
+						<outline text="集中式：版本库集中存放在中央服务器，必须联网才能工作"></outline>
+						<outline text="分布式：版本库在自己电脑上，不需要联网"></outline>
+					</outline>
+				</outline>
+				<outline text="安装Git">
+					<outline text="在Linux上安装Git">
+						<outline text="输入git命令检查是否安装git"></outline>
+						<outline text="对于Debian或Ubuntu,输入命令[sudo apt-get install git]完成安装"></outline>
+						<outline text="其他Linux版本，通过源码安装：下载源码解压后，依次输入【./config】，【make】，【sudo make install】命令安装"></outline>
+					</outline>
+					<outline text="在Mac OS X上安装Git">
+						<outline text="安装homebrew，通过homebrew安装Git，参考homebrew文档：http://brew.sh/、"></outline>
+						<outline text="从AppStore安装Xcode，运行Xcode，选择菜单“Xcode”-&gt;“Preferences”，在弹出窗口中找到“Downloads”，选择“Command Line Tools”，点击“install”完成安装"></outline>
+					</outline>
+					<outline text="在Windows上安装Git">
+						<outline text="官网下载安装程序【https://git-scm.com/downloads】，默认选项安装即可"></outline>
+						<outline text="在开始菜找到“Git”-&gt;“Git Bash”，说明安装成功"></outline>
+					</outline>
+					<outline text="Git安装完成后，为什么要配置名字和邮件地址？配置命令是什么？">
+						<outline text="配置命令：【git config --global user.name &quot;Your Name&quot;】【git config --global user.email &quot;email@example.com&quot;】"></outline>
+						<outline text="Git是分布式版本系统，每个机器都必须自报家门：你的名字和Email地址"></outline>
+					</outline>
+				</outline>
+				<outline text="创建版本库">
+					<outline text="什么是版本库？">
+						<outline text="又名仓库，英文名repository"></outline>
+						<outline text="可理解成一个目录，目录里的文件都被Git管理，每个文件的修改、删除都能跟踪，以便追踪历史或还原"></outline>
+					</outline>
+					<outline text="怎么创建版本库？">
+						<outline text="选择一个合适的地方，创建一个空目录（可以不是空目录、Windows确保目录名不包含中文）"></outline>
+						<outline text="通过【git init】命令将目录变成Git可以管理的仓库"></outline>
+					</outline>
+					<outline text="版本控制系统可以跟踪哪些文件？">
+						<outline text="可以跟踪文本文件，比如TXT文件、网页、所有程序代码，可以告诉你具体是什么地方被修改了"></outline>
+						<outline text="图片、视频可以版本控制，但不能跟踪文件的变化"></outline>
+						<outline text="Word是二进制格式，版本控制系统没办法跟踪变化"></outline>
+					</outline>
+					<outline text="怎么把文件添加到版本库？">
+						<outline text="仓库文件（不是文件夹）被修改（删除）后，使用【git add &lt;file&gt;】把文件添加到仓库"></outline>
+						<outline text="用命令【git commit -m &lt;message&gt;】把文件提交到仓库，【-m】后面输入的是本次提交的说明"></outline>
+					</outline>
+					<outline text="为什么Git添加文件需要【add】、【commit】一共两步？">
+						<outline text="【commit】可以一次提交很多文件，所以你可以多次【add】不同文件"></outline>
+					</outline>
+				</outline>
+			</outline>
+			<outline text="时光机穿梭">
+				<outline text="版本回退">
+					<outline text="【git status】命令可以的得到什么信息？">
+						<outline text="【git status】让我们掌握当前仓库的状态"></outline>
+						<outline text="告诉我们哪些文件被修改了"></outline>
+						<outline text="告诉我们是否还有修改未提交"></outline>
+					</outline>
+					<outline text="怎样查看文件具体修改了什么内容？">
+						<outline text="【git diff &lt;file&gt;】"></outline>
+					</outline>
+					<outline text="【git log】命令的作用？">
+						<outline text="显示从最近到最远的提交【commit】日志"></outline>
+						<outline text="每条记录的看不懂的一大串字符是commit id（版本号）"></outline>
+					</outline>
+					<outline text="在Git中，怎样表示版本？">
+						<outline text="【HEAD】表示当前版本"></outline>
+						<outline text="【HEAD^】表示上一个版本"></outline>
+						<outline text="【HEAD^^】表示上上个版本"></outline>
+						<outline text="【HEAD~100】表示往上100个版本"></outline>
+						<outline text="也可以通过具体的commit id表示"></outline>
+					</outline>
+					<outline text="如何回退到以前版本？">
+						<outline text="【git reset --hard HEAD^】"></outline>
+						<outline text="【git reset --hard commit_id】版本号没必要写全，前几位就可以了"></outline>
+					</outline>
+					<outline text="回退到某一个版本后，如何回到原来版本？（重返未来）">
+						<outline text="使用【git reflog】(此命令用来记录你的每一次命令)找到原来版本的版本号"></outline>
+						<outline text="使用回退版本命令【git reset --hard commit_id】"></outline>
+					</outline>
+				</outline>
+				<outline text="工作区和暂存区">
+					<outline text="什么是工作区？">
+						<outline text="电脑里能看到的目录"></outline>
+						<outline text="工作区有一个隐藏目录【.git】这个不是工作区，是Git的版本库"></outline>
+					</outline>
+					<outline text="什么是暂存区？">
+						<outline text="Git的版本库（【.git】目录）里存了很多东西，最重要的是称为stage（或叫index）的暂存区，还有Git为我们自动创建的第一个分支【master】，以及指向【master】的一个指针叫【HEAD】"></outline>
+					</outline>
+					<outline text="暂存区在文件提交到版本库时起到的作用？">
+						<outline text="用【git add】命令添加文件时，实际上就是把文件修改添加到暂存区"></outline>
+						<outline text="用【git commit】命令提交更改，实际上就是把暂存区的所有内容提交到当前分支"></outline>
+					</outline>
+				</outline>
+				<outline text="管理修改">
+					<outline text="为什么说Git管理的是修改？">
+						<outline text="将一个文件修改，添加到暂存区"></outline>
+						<outline text="在对文件进行第二次修改，然后提交第一次修改"></outline>
+						<outline text="然后使用【git status】命令发现第二次修改并没有被提交"></outline>
+						<outline text="如果要提交两次修改，可以将第二次修改添加到暂存区，再提交，此时相当于合并了两次修改，或者提交了第一次修改后，再提交第二次修改"></outline>
+						<outline text="以上说明git管理的是修改，是以修改为单位的"></outline>
+					</outline>
+					<outline text="怎样查看工作区的文件与版本库里最新版本的区别？">
+						<outline text="【git diff HEAD -- &lt;file&gt;】"></outline>
+					</outline>
+				</outline>
+				<outline text="撤销修改">
+					<outline text="怎样撤销文件在工作区的全部修改？">
+						<outline text="【git checkout -- &lt;file&gt;】，这个命令让这个文件回到最近一次【git add】或【git commit】时的状态"></outline>
+						<outline text="使用【git reset HEAD &lt;file&gt;】命令撤销"></outline>
+					</outline>
+				</outline>
+				<outline text="删除文件">
+					<outline text="如何提交工作区删除文件的修改 ？">
+						<outline text="先使用命令【git rm &lt;file&gt;】或【git add &lt;file&gt;】"></outline>
+						<outline text="再使用命令【git commit -m &lt;message&gt;】"></outline>
+					</outline>
+					<outline text="如何回复工作区误删的文件？">
+						<outline text="【git checkout -- &lt;file&gt;】将误删文件恢复到最新版本"></outline>
+						<outline text="从来没有添加到版本库就被删除的文件是无法回复的"></outline>
+					</outline>
+				</outline>
+			</outline>
+			<outline text="远程仓库">
+				<outline text="Github">
+					<outline text="怎样配置GitHub？">
+						<outline text="创建SSH key。查看用户主目录下是否有【.ssh】目录，如果有，再看该目录下是否有【id_ed25519】和【id_ed25519.pub】这两个文件，如果有，跳到下一步，否则打开Shell（Windows打开Git Bash）创建SSH key:【ssh-keygen -t ed25519 -C &quot;your_email@example.com&quot;】">
+							<outline text="【id_ed25519】是私钥不能泄露出去，【id_ed25519.pub】是公钥，可以放心告诉别人"></outline>
+						</outline>
+						<outline text="登陆Github，打开“Account settings”，“SSH Keys”页面。点“Add SSH Key”，填上任意Title，在文本框里黏贴【id_ed25519.pub】文件的内容，最后点击“Add Key”"></outline>
+					</outline>
+				</outline>
+				<outline text="添加远程库">
+					<outline text="如何让本地仓库关联远程库？">
+						<outline text="【git remote add origin git@sever-name:path/repo-name.git】"></outline>
+						<outline text="关联仓库时，必须给远程库指定一个名字，【origin】是默认习惯的命名"></outline>
+					</outline>
+					<outline text="如何推送本地仓库到远程？">
+						<outline text="本地仓库关联远程后，使用【git push -u origin master】第一次推送master分支所有内容"></outline>
+						<outline text="此后，每次提交提交，只要有必要，就可以使用【git push origin master】推送最新修改"></outline>
+					</outline>
+					<outline text="SSH警告？">
+						<outline text="第一次使用Git的【clone】或【push】命令时得到的警告"></outline>
+						<outline text="SSH第一次验证Github服务器的Key时，需要你确认Github的Key的指纹信息是否真的来自Github的服务器，输入【yes】回车即可"></outline>
+						<outline text="Git会输出一个警告，告诉你已经将Github的Key加入信任列表了，这个警告只会出现一次"></outline>
+					</outline>
+					<outline text="删除远程库？（解除关联）">
+						<outline text="先用【git remote -v】查看远程库信息"></outline>
+						<outline text="然后名字删除，例如【origin】，使用命令【git remote rm origin】"></outline>
+						<outline text="此处的“删除”只是解除了本地和远程的关联，并不是物理上删除了远程库"></outline>
+					</outline>
+				</outline>
+				<outline text="从远程库克隆">
+					<outline text="怎样从远程仓库克隆？">
+						<outline text="【git clone git@server-name:path/repo-name.git】"></outline>
+					</outline>
+				</outline>
+			</outline>
+			<outline text="分支管理">
+				<outline text="创建与合并分支">
+					<outline text="什么是分支？">
+						<outline text="Git中，每次提交，Git都把他们串成一条时间线，这条时间线就是一个分支"></outline>
+						<outline text="默认只有【master】分支，【HEAD】严格来说不是指向提交，而是指向【master】，【master】才是指向提交的，所以，【HEAD】指向的是当前分支"></outline>
+						<outline text="每次提交，【master】分支都会向前移动一步"></outline>
+						<outline text="新建一个分支【dev】，指向【master】分支相同的提交，再将【HEAD】指向【dev】，就表示当前分支在【dev】上"></outline>
+					</outline>
+					<outline text="分支的好处？">
+						<outline text="创建一个自己的分支，将代码提交到自己的分支上，保证自己的进度不会丢失"></outline>
+						<outline text="也不用将未完成的代码提交到主分支上，也就避免影响其他人的工作"></outline>
+					</outline>
+					<outline text="怎么创建分支？">
+						<outline text="【git checkout -b &lt;branch-name&gt;】或【git switch -c &lt;branch-name&gt;】上面的命令表示创建并切换到新分支，相当于下面两条命令"></outline>
+						<outline text="【git branch &lt;branch-name&gt;】【git checkout &lt;branch-name&gt;】"></outline>
+					</outline>
+					<outline text="怎么切换分支?">
+						<outline text="【git checkout &lt;branch-name&gt;】"></outline>
+						<outline text="【git switch &lt;branch-name&gt;】"></outline>
+					</outline>
+					<outline text="怎么查看当前分支？">
+						<outline text="【git branch】"></outline>
+					</outline>
+					<outline text="怎么合并分支？">
+						<outline text="直接把【master】指向【dev】的当前提交，就完成了合并"></outline>
+						<outline text="合并完分支后，就可以删除【dev】了"></outline>
+						<outline text="【git merge &lt;branch-name&gt;】合并指定分支到当前分支"></outline>
+					</outline>
+					<outline text="怎样查看分支合并图？">
+						<outline text="【git log --graph】"></outline>
+					</outline>
+					<outline text="怎么删除分支？">
+						<outline text="删除分支就是分支【dev】的指针给删掉"></outline>
+						<outline text="【git branch -d &lt;branch-name&gt;】"></outline>
+					</outline>
+				</outline>
+				<outline text="解决冲突">
+					<outline text="什么是冲突？">
+						<outline text="合并的两个分支从分支点后都有新的提交的修改"></outline>
+					</outline>
+					<outline text="怎么解决冲突？">
+						<outline text="【git status】可以查看冲突的文件"></outline>
+						<outline text="直接打开冲突文件，Git会在冲突的地方给予提示，修改完成提交后即可完成合并，冲突也就解决了"></outline>
+					</outline>
+				</outline>
+				<outline text="分支管理策略">
+					<outline text="什么是【Fast forward】模式？">
+						<outline text="在合并分支时，直接将主分支指向被合并分支的最新提交"></outline>
+						<outline text="这种模式下，删除掉分支后，会丢失分支信息"></outline>
+					</outline>
+					<outline text="如何禁用【Fast forward】模式？">
+						<outline text="【git merge --no-ff &lt;被合并的分支名&gt;】"></outline>
+						<outline text="这样合并会生成一个新的【commit】，这样就可以从分支历史上看出分支信息"></outline>
+						<outline text="由于此时合并会创建一个新的【commit】，所以可以加上【-m &lt;msg&gt;】参数描述合并信息"></outline>
+					</outline>
+					<outline text="分支管理的几个基本原则？">
+						<outline text="【master】分支是稳定的，用于发布新版本，平时不在上面干活"></outline>
+						<outline text="【dev】分支是不稳定的，平时在上面干活，到发布新版本时，再将其合并到【master】分支上"></outline>
+						<outline text="每个人都在【dev】分支上干活，每个人都有自己的分支，时不时往【dev】分支上提交"></outline>
+					</outline>
+				</outline>
+				<outline text="Bug分支">
+					<outline text="什么是【Bug】分支？">
+						<outline text="软件开发中，Bug是频繁出现的，每个Bug可以通过创建分支来修复它"></outline>
+					</outline>
+					<outline text="如何存储当前工作场景？">
+						<outline text="应用场景：你的工作预计还有一天完成，现在有一个Bug需要两小时内修复，则需要将你当前的工作存储起来，等以后恢复现场后继续工作"></outline>
+						<outline text="【git stash】"></outline>
+						<outline text="此时，用【git status】命令查看工作起就是干净的，可以放心的创建分支来修复Bug"></outline>
+					</outline>
+					<outline text="修复Bug的流程？">
+						<outline text="确定在哪个分支上修复Bug，假定在【master】分支上修复Bug，就在【master】分支上创建临时分支"></outline>
+						<outline text="切换到临时分支修复Bug并提交"></outline>
+						<outline text="回到【master】分支，将临时分支合并到【master】分支，最后删除临时分支"></outline>
+					</outline>
+					<outline text="如何恢复之前保存的工作现场？">
+						<outline text="使用【git stash list】查看自己保存的工作现场"></outline>
+						<outline text="使用【git stash apply】（有多个stash时，使用【git stash apply stash@{&lt;编号&gt;}】恢复指定stash），此命令并不会删除stash"></outline>
+						<outline text="使用【git stash pop】命令恢复现场并删除stash"></outline>
+					</outline>
+					<outline text="如何复制一个特定的提交到当前分支？">
+						<outline text="应用场景：在【master】分支上的Bug在【dev】分支上也存在，当修复【master】分支上的Bug后，只需要将修复Bug所做的修改复制到【dev】即可修复在【dev】分支上的Bug，而不需要在重复操作一次"></outline>
+						<outline text="【git cherry-pick &lt;commit_id&gt;】"></outline>
+					</outline>
+				</outline>
+				<outline text="Feature分支">
+					<outline text="什么是Feature分支？">
+						<outline text="在软件开发过程中，不断有新功能需要加进来，我们不希望因为这些实验性质的代码打乱主分支，所以每天添加一个新功能就新建一个Feature分支，在上面开发新功能，完成后合并，然后删除"></outline>
+					</outline>
+					<outline text="怎样丢弃一个没有被合并过的分支？">
+						<outline text="应用场景：在Feature分支上开发新功能，完成后，由于一些原因取消了新功能，但也要删除这个Feature分支"></outline>
+						<outline text="【git branch -D &lt;branch-name&gt;】"></outline>
+					</outline>
+				</outline>
+				<outline text="多人协作">
+					<outline text="克隆的一些特点？">
+						<outline text="克隆时自动将本地的【master】分支与远程的【master】分支对应起来了"></outline>
+						<outline text="远程仓库默认【origin】"></outline>
+						<outline text="默认只能看到本地的【master】分支，如果有其他分支是看不到的"></outline>
+					</outline>
+					<outline text="怎样查看远程库信息？">
+						<outline text="【git remote】"></outline>
+						<outline text="【git remote -v】"></outline>
+					</outline>
+					<outline text="什么是推送分支？">
+						<outline text="推送分支就是将该分支上的所有本地修改推送到远程库"></outline>
+					</outline>
+					<outline text="怎样推送分支？">
+						<outline text="【git push &lt;remote-name&gt; &lt;branch-name&gt;】"></outline>
+					</outline>
+					<outline text="哪些分支需要推送？">
+						<outline text="【master】分支需要时刻与远程同步"></outline>
+						<outline text="【dev】分支是开发分支，也需要与远程同步"></outline>
+						<outline text="【bug】分支只用于在本地修复Bug，一般不用推送"></outline>
+						<outline text="【feature】是否推送到远程，取决于你和小伙伴是否合作在上面开发"></outline>
+					</outline>
+					<outline text="怎样从远程创建【dev】分支（或除【master】以外的分支）到本地？">
+						<outline text="【git checkout -b dev origin/dev】"></outline>
+					</outline>
+					<outline text="怎样设置本地分支与远程分支的连接（【master】分支是自动连接的）？">
+						<outline text="【git branch --set-upstream-to=origin/dev dev】"></outline>
+					</outline>
+					<outline text="怎样抓取远程库的最新提交到本地？">
+						<outline text="【git pull】"></outline>
+						<outline text="注意设置本地分支和远程分支的关联，才能抓取"></outline>
+					</outline>
+					<outline text="怎样解决推送时与别人的提交发生的冲突？">
+						<outline text="将最新的提交抓取下来 ，然后在本地合并，解决冲突，再推送"></outline>
+						<outline text="【git pull】提示【no tracking information】是因为本地分支和远程分支的链接关系没有创建"></outline>
+					</outline>
+				</outline>
+				<outline text="Rebase">
+					<outline text="【git rebase】的作用？">
+						<outline text="应用场景：在推送到远程发送冲突，解决冲突再推送到远程后，分支图就不再是一条直线，很不美观"></outline>
+						<outline text="在本地解决冲突后，先使用【git rebase】命令，再将分支推送到远程，此时分支图就是一条直线了，这样更加直观，但是分支提交被修改了"></outline>
+						<outline text="rebase操作可以把本地未push的分叉提交历史整理成直线"></outline>
+						<outline text="rebase的目的是使得我们在查看历史提交的变化时更容易，因为分叉的提交需要三方对比"></outline>
+					</outline>
+				</outline>
+			</outline>
+			<outline text="标签管理">
+				<outline text="概述">
+					<outline text="什么是标签？">
+						<outline text="发布版本时，我们通常会打一个标签（tag），将来的某个时刻，取出某个标签的版本，就是把那个标签的历史版本取出来"></outline>
+						<outline text="标签是版本库的快照，实际上是指向某个commit的指针，跟分支相似，不同的是，分支能够移动，标签不能"></outline>
+						<outline text="版本号不方便记忆，而标签容易"></outline>
+					</outline>
+				</outline>
+				<outline text="创建标签">
+					<outline text="怎样打标签？">
+						<outline text="切换到要打标签的分支"></outline>
+						<outline text="【git tag &lt;tag_name&gt;】默认标签是打在最新的commit上的"></outline>
+						<outline text="【git tag &lt;tag_name&gt; &lt;commit_id&gt;】对特定的commit打标签"></outline>
+						<outline text="【git tag -a &lt;tag_name&gt; -m &lt;msg&gt; &lt;commit_id&gt;】-a参数指定标签名，-m参数指定说明文字"></outline>
+						<outline text="标签指向commit，如果两个分支有同一个commit那么两个分支上都可以看到指向这个commit的标签"></outline>
+					</outline>
+					<outline text="怎样查看所有标签？">
+						<outline text="【git tag】"></outline>
+						<outline text="标签不是按时间排序的而是按字母排序的"></outline>
+					</outline>
+					<outline text="怎样查看标签信息？">
+						<outline text="【git show &lt;tag_name&gt;】"></outline>
+					</outline>
+				</outline>
+				<outline text="操作标签">
+					<outline text="怎样删除本地标签？">
+						<outline text="【git tag -d &lt;tag_name&gt;】"></outline>
+					</outline>
+					<outline text="怎样推送标签到远程？">
+						<outline text="【git push origin &lt;tag_name&gt;】推送某个标签到远程"></outline>
+						<outline text="【git push origin --tags】推送所有没有推送的标签到远程"></outline>
+					</outline>
+					<outline text="怎样删除远程标签？">
+						<outline text="先将本地标签删除"></outline>
+						<outline text="然后从远程删除【git push origin :refs/tags/&lt;tag_name&gt;】"></outline>
+					</outline>
+				</outline>
+			</outline>
+			<outline text="使用GitHub/Gitee">
+				<outline text="Github">
+					<outline text="怎样参与开源项目？">
+						<outline text="将别人的开源项目【fork】到自己的仓库，在将项目从自己仓库克隆到本地，如果从别人仓库克隆到本地是没有推送权限的"></outline>
+						<outline text="然后在本地干完活，推送到自己仓库"></outline>
+						<outline text="如果想要将自己的修改提交给项目作者，只需要发起一个【pull request】，作者选择是否接受"></outline>
+					</outline>
+				</outline>
+				<outline text="Gitee">
+					<outline text="一个仓库可以关联多个远程库吗？">
+						<outline text="可以，但是关联两个远程库时，远程库的名字是不同的"></outline>
+					</outline>
+				</outline>
+			</outline>
+			<outline text="自定义Git">
+				<outline text="概述">
+					<outline text="怎样使Git命令输出显示颜色？">
+						<outline text="【git config --global color.ui true】"></outline>
+					</outline>
+				</outline>
+				<outline text="忽略特殊文件">
+					<outline text="忽略特殊文件的应用场景？">
+						<outline text="对于存放特殊口令的配置文件，编译产生的中间文件等不希望被提交，但是每次【git status】时总会显示【Untracked files...】，强迫着患者忍不了"></outline>
+					</outline>
+					<outline text="怎样忽略特殊文件？">
+						<outline text="在Git工作区根目录下创建【.gitignore】文件，然后把要忽略的文件名填进去，Git就会忽略这些文件"></outline>
+						<outline text="在【.gitignore】文件中，行首带【#】的是注释"></outline>
+						<outline text="可以用【*】表示任意字符，例如【*.class】表示所有后缀为【.class】的文件"></outline>
+						<outline text="使用【!&lt;文件名&gt;】表示这个文件不被忽略"></outline>
+						<outline text="注意不要忽略【.gitignore】文件本身"></outline>
+					</outline>
+					<outline text="怎样添加被忽略的文件？">
+						<outline text="【git add -f &lt;file&gt;】"></outline>
+					</outline>
+					<outline text="怎样检查某个文件是否被忽略？">
+						<outline text="【git check-ignore -v &lt;file&gt;】"></outline>
+					</outline>
+				</outline>
+				<outline text="配置别名">
+					<outline text="怎样配置别名？">
+						<outline text="【git config --global alias.&lt;alias_name&gt; &lt;command&gt;】"></outline>
+					</outline>
+					<outline text="配置文件在哪儿？">
+						<outline text="当前仓库的配置文件：【.git/config】"></outline>
+						<outline text="当前用户的配置文件：用户主目录下【.gitconfig】"></outline>
+						<outline text="配置Git时，【--global】参数是针对当前用户设置的，不加这个参数，就仅对当前仓库生效"></outline>
+					</outline>
+					<outline text="怎样删除别名？">
+						<outline text="在配置文件中删除相应的行即可"></outline>
+					</outline>
+				</outline>
+			</outline>
+		</outline>
+	</body>
+</opml>

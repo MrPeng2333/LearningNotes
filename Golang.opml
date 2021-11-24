@@ -1,0 +1,1032 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<opml version="1.0">
+	<head>
+		<dateCreated>Wed Nov 10 2021 21:01:24 GMT+0800 (中国标准时间)</dateCreated>
+		<dateModified>Wed Nov 10 2021 21:01:24 GMT+0800 (中国标准时间)</dateModified>
+	</head>
+	<body>
+		<outline text="Golang">
+			<outline text="基础知识">
+				<outline text="hello_world">
+					<outline text="怎样设置环境变量？">
+						<outline text="设置【GOPATH】环境变量，在【1.8】版本之前必须设置，之后的版本不设置会使用默认值，Mac上通过修改【～/.bash_profile】来设置"></outline>
+					</outline>
+					<outline text="应用程序入口？">
+						<outline text="必须是【main】包：【package main】"></outline>
+						<outline text="必须是【main()】方法：func main()"></outline>
+						<outline text="文件名不一定是【main.go】"></outline>
+					</outline>
+					<outline text="【main()】函数特点？">
+						<outline text="不支持任何返回值，通过【os.Exit()】来返回状态"></outline>
+						<outline text="不支持传入参数 ，通过【os.Args】来获取命令行参数"></outline>
+					</outline>
+				</outline>
+				<outline text="变量">
+					<outline text="编写测试程序的文件、方法命名？">
+						<outline text="源码文件以【_test】结尾：xxx_test.go"></outline>
+						<outline text="测试方法名以【Test】开头：func TestXXX(t *testing.T){...}"></outline>
+					</outline>
+					<outline text="声明变量的方法有哪些？">
+						<outline text="var &lt;name&gt; &lt;type&gt;：初始化时若赋值可省略变量类型，Go会根据【=】右值推导出变量类型">
+							<outline text="若不指定类型声明变量，即显式初始化，若【=】右值为小数，变量类型会定为float64，大多数情况下不需要这么高的精度，推荐指定类型float32"></outline>
+						</outline>
+						<outline text="var (&lt;name&gt; &lt;type&gt; &lt;br&gt;....)：多个变量一起声明"></outline>
+						<outline text="&lt;name&gt; := &lt;value&gt;：声明并初始化一个变量，Go根据右值推导其类型，这种方式只能用于函数内部"></outline>
+						<outline text="&lt;name1&gt;, &lt;name2&gt; := &lt;value1&gt;, &lt;value2&gt;：声明并初始化多个变量，此方式可用于交换变量值（a, b = b, a）"></outline>
+					</outline>
+					<outline text="常量快速设置连续值？">
+						<outline text="const (Monday = iota + 1 Tuesday Wednsday)"></outline>
+						<outline text="const (Open = 1 &lt;&lt; iota Close Pending)"></outline>
+					</outline>
+					<outline text="如何声明常量？">
+						<outline text="const &lt;name&gt; &lt;type&gt;"></outline>
+						<outline text="const {&lt;name&gt; &lt;type&gt; ...}"></outline>
+					</outline>
+					<outline text="什么是隐式初始化、显式初始化？">
+						<outline text="定义变量时若没有赋值，Go就会自动对其初始化，这就是隐式初始化，反之就是显式初始化"></outline>
+					</outline>
+					<outline text="各类型的隐式初始化值？">
+						<outline text="string为空字符串"></outline>
+						<outline text="int为0"></outline>
+						<outline text="float为0.0"></outline>
+						<outline text="bool为false"></outline>
+						<outline text="指针类型为nil"></outline>
+					</outline>
+					<outline text="什么是指针变量？">
+						<outline text="指针变量就是存储变量地址的变量"></outline>
+						<outline text="普通变量存储的是值，指针变量存储的是地址"></outline>
+					</outline>
+					<outline text="什么是匿名变量？">
+						<outline text="也成占位符或空白标识符，用下划线表示"></outline>
+					</outline>
+					<outline text="匿名变量的优点？">
+						<outline text="不分配内存，不占用内存空间"></outline>
+						<outline text="不需要为无用变量命名而烦恼"></outline>
+						<outline text="多次声明不会有任何问题"></outline>
+					</outline>
+					<outline text="怎样定义指针变量？">
+						<outline text="var ptr = &amp;var_name"></outline>
+						<outline text="var ptr = new(type)：此方式会创建一个type类型的匿名变量，初始化为type类型的零值，然后返回变量的地址，返回的指针类型为【*type】"></outline>
+					</outline>
+					<outline text="类型转换与其他语言的区别？">
+						<outline text="不支持隐式类型转换，即小类型赋值给大类型时自动转换类型"></outline>
+						<outline text="甚至不支持别名类型到原类型的转换"></outline>
+					</outline>
+					<outline text="指针类型与其他语言的区别？">
+						<outline text="不能进行指针运算，比如通过指针自增来访问连续的数组值"></outline>
+					</outline>
+				</outline>
+				<outline text="运算符">
+					<outline text="使用【==】比较数组的条件及比较结果？">
+						<outline text="条件：相同维数且元素个数相同的数组才能比较"></outline>
+						<outline text="结果：数组中每个元素都相同时才相等"></outline>
+					</outline>
+					<outline text="什么是【&amp;^】运算符？">
+						<outline text="按位置零运算符"></outline>
+						<outline text="运算符右数二进制位上为1，则无论对应左数二进制位上是啥，结果都为0；运算符右数二进制位为0，则左数对应二进制位原来是什么就是什么"></outline>
+					</outline>
+				</outline>
+				<outline text="数据类型">
+					<outline text="整型的分类？">
+						<outline text="int（取决于操作系统的位数）、int8、int16、int32、int64；uint（取决于操作系统的位数）、uint8、uint16、uint32、uint64"></outline>
+						<outline text="int和uint的区别在于有无符号位，uint只能表示正整数"></outline>
+					</outline>
+					<outline text="不同进制的表示方法？">
+						<outline text="二进制：0b或0B为前缀"></outline>
+						<outline text="八进制：0o或0O为前缀"></outline>
+						<outline text="十六进制：0x为前缀"></outline>
+					</outline>
+					<outline text="浮点数的精度是多少？">
+						<outline text="float32精度为小数点后6位"></outline>
+						<outline text="float64精度位小数点后15位"></outline>
+					</outline>
+					<outline text="浮点数的最大值如何表示？">
+						<outline text="&quot;math.MaxFloat32&quot;">
+							<outline text="引号是由于OPML无法转换添加的"></outline>
+						</outline>
+						<outline text="&quot;math.MaxFloat64&quot;"></outline>
+					</outline>
+					<outline text="byte类型？">
+						<outline text="与uint8类型没有区别，占一个字节，能表示0到255，表示的是ASCII字符的一个字符"></outline>
+					</outline>
+					<outline text="rune类型？">
+						<outline text="与int32类型没有区别，表示的是一个Unicode字符"></outline>
+					</outline>
+					<outline text="字符与字符串的区别？">
+						<outline text="形式上字符用单引号，字符串用双引号"></outline>
+						<outline text="字符实质上一个整数"></outline>
+					</outline>
+					<outline text="字符串（string）的表示方法？">
+						<outline text="双引号表示，此时【\r\n】等有特殊含义的转义符需要【\\r\\n】表示"></outline>
+						<outline text="反引号表示，此时【\r\n】直接表示即可，所见即所得"></outline>
+					</outline>
+					<outline text="string与其他语言的差异？">
+						<outline text="string是数据类型，不是引用或指针类型"></outline>
+						<outline text="string是只读的【byte slice】，【len】函数可以计算它所包含的【byte】数"></outline>
+						<outline text="string的【byte】数组可以存放任何数据"></outline>
+						<outline text="未赋值的string变量其值不是【nil】，而是空字符串"></outline>
+					</outline>
+					<outline text="什么是【unicode】和【UTF8】？">
+						<outline text="Unicode是一种字符集（code point）"></outline>
+						<outline text="UTF8是unicode的存储实现（转换为字节序列的规则）"></outline>
+					</outline>
+					<outline text="声明数组的方法？">
+						<outline text="var &lt;arr_name&gt; [size]&lt;type&gt;"></outline>
+						<outline text="var &lt;arr_name&gt; [size]&lt;type&gt; = [size]&lt;type&gt;{v1, ... , v_size}"></outline>
+						<outline text="&lt;arr_name&gt; := [size]&lt;type&gt;{v_1, ... , v_size}"></outline>
+						<outline text="&lt;arr_name&gt; := [...]&lt;type&gt;{v_1, ...}：使用【...】代替具体的size，解除硬编码"></outline>
+						<outline text="&lt;arr_name&gt; := [size]&lt;type&gt;{index : value}：除了【index】位置的值以外其余都默认为0值"></outline>
+					</outline>
+					<outline text="怎样声明多维数组？">
+						<outline text="声明并初始化：arr := [2][2]int{{1, 2}, {3, 4}}"></outline>
+					</outline>
+					<outline text="怎样为类型定义别名？">
+						<outline text="类型别名也成类型字面量"></outline>
+						<outline text="type &lt;alias_name&gt; &lt;type&gt;"></outline>
+						<outline text="类型也包括方法签名"></outline>
+					</outline>
+					<outline text="切片的内部结构？">
+						<outline text="![](https://gitee.com/mr-peng2333/image-storage/raw/master/img/20211020001247.png)"></outline>
+						<outline text="【ptr】指向一片连续的内存空间"></outline>
+					</outline>
+					<outline text="怎样截取数组？">
+						<outline text="左闭右开：arr[s : e]"></outline>
+						<outline text="arr[s : e : last]：last指的是e的值最多到last"></outline>
+					</outline>
+					<outline text="切片的声明方式？">
+						<outline text="var &lt;name&gt; []&lt;type&gt;"></outline>
+						<outline text="var &lt;name&gt; = []&lt;type&gt;{}：空切片"></outline>
+						<outline text="var &lt;name&gt; := make([]&lt;type&gt;, size, cap)：使用make函数构造切片，【cap】参数可以省略，省略后和【size】大小一致"></outline>
+						<outline text="&lt;name&gt; := []&lt;type&gt;{index : value}：此时切片的【size】和【cap】都和【index】一致，除【index】位置的值以外，都是零值"></outline>
+					</outline>
+					<outline text="切片容量（【cap】）扩展的方式？">
+						<outline text="添加元素容量不够时，容量以两倍增加"></outline>
+					</outline>
+					<outline text="切片的共享存储？">
+						<outline text="![](https://gitee.com/mr-peng2333/image-storage/raw/master/img/20211020081548.png)"></outline>
+						<outline text="此时，共享存储的两个切片，一个切片的值改变，另一个也会改变"></outline>
+					</outline>
+					<outline text="切片与数组的区别？">
+						<outline text="容量是否可以伸缩"></outline>
+						<outline text="是否可以进行比较"></outline>
+					</outline>
+					<outline text="【append()】方法的使用？">
+						<outline text="追加一个元素：myarr = append(myarr, 2)"></outline>
+						<outline text="追加多个元素：myarr = append(myarr, 3, 4)"></outline>
+						<outline text="追加一个切片：myarr = append(myarr, []int{7, 8}...)"></outline>
+						<outline text="在第一个位置插入元素：myarr = append([]int{0}, myarr...)"></outline>
+						<outline text="在中间插入一个切片：myarr = append(myarr[:5], append([]int{5,6}, myarr[5:]...)...)"></outline>
+					</outline>
+					<outline text="声明初始化【map】的方法？">
+						<outline text="var scores map[string]int = map[string]int{&quot;english&quot;: 80, &quot;chinese&quot;: 85}：若只是声明没有赋值，则必须使用【make()】函数初始化后才能赋值，类似于Java引用类型必须先new才能赋值"></outline>
+						<outline text="scores := map[string]int{&quot;english&quot;: 80, &quot;chinese&quot;: 85}"></outline>
+						<outline text="scores := make(map[string]int, &lt;cap&gt;)"></outline>
+					</outline>
+					<outline text="怎样删除字典值？">
+						<outline text="delete(dict_name, key)"></outline>
+						<outline text="key不存在时不会报错"></outline>
+					</outline>
+					<outline text="怎样添加字典值？">
+						<outline text="dict_name[key] = value"></outline>
+					</outline>
+					<outline text="访问不存在的字典值会报错吗？">
+						<outline text="不会，会返回value-type的零值"></outline>
+					</outline>
+					<outline text="怎样判断字典的key是否存在？">
+						<outline text="字典的下标读取可以返回两个值，第二个值即表示对应的key是否存在（true/false）"></outline>
+					</outline>
+					<outline text="怎样循环字典？">
+						<outline text="for subject, score := range scores {}"></outline>
+						<outline text="for subject := range scores {}"></outline>
+						<outline text="for _, score := range scores {}"></outline>
+					</outline>
+					<outline text="【map】与工厂模式？">
+						<outline text="【map】的【value】可以是一个方法"></outline>
+						<outline text="与Go的Dock type接口方式一起，可以方便的实现单一对象的工厂模式"></outline>
+						<outline text="![](https://gitee.com/mr-peng2333/image-storage/raw/master/img/20211020090955.png)"></outline>
+					</outline>
+					<outline text="map实现set基本功能？">
+						<outline text="Go没有内置Set，可以使用map[int]bool{}来实现set的一些基本功能"></outline>
+					</outline>
+					<outline text="bool类型的一些特点？">
+						<outline text="true/false同1/0不一致"></outline>
+						<outline text="逻辑取反使用【!】"></outline>
+					</outline>
+					<outline text="指针的创建方法？">
+						<outline text="使用【&amp;】获取变量的地址赋给指针变量"></outline>
+						<outline text="先使用【new】方法创建指针（ptr := new(type)），分配内存，再往对应内存地址中赋值（*ptr = value）"></outline>
+						<outline text="声明一个指针（var &lt;ptr_name&gt; *&lt;type&gt;），再将其他变量的地址赋给指针变量"></outline>
+					</outline>
+					<outline text="怎样通过函数改变数组的值？">
+						<outline text="传递数组的切片"></outline>
+						<outline text="传递数组的指针"></outline>
+					</outline>
+				</outline>
+				<outline text="流程控制">
+					<outline text="Go中的流程控制方法有哪些？">
+						<outline text="if-else条件语句"></outline>
+						<outline text="switch-case选择语句"></outline>
+						<outline text="for-range循环语句"></outline>
+						<outline text="goto无条件跳转语句"></outline>
+						<outline text="defer延迟执行"></outline>
+					</outline>
+					<outline text="if-else条件语句中对花括号的要求？">
+						<outline text="Go要求else if或else 要和两边的花括号在同一行"></outline>
+					</outline>
+					<outline text="if的高级写法？">
+						<outline text="if可以先写一个表达式，取得变量后，再对其进行判断，中间用分号隔开"></outline>
+					</outline>
+					<outline text="switch-case语句的特点？">
+						<outline text="一个case后可以接多个条件，用逗号隔开，条件之间是或的关系"></outline>
+						<outline text="case后的条件常量只能出现一次"></outline>
+						<outline text="switch后可接函数"></outline>
+						<outline text="switch后可不接表达式，不接时就相当于if-else if-else"></outline>
+						<outline text="case中使用【fallthrough】关键字时会直接执行下一个case的语句而不判断条件"></outline>
+					</outline>
+					<outline text="switch条件与其他语言的区别？">
+						<outline text="条件表达式不限制为常量或者整数"></outline>
+						<outline text="单个【case】中，可以出现多个结果选项，使用逗号分隔"></outline>
+						<outline text="不需要【break】明确退出一个【case】"></outline>
+						<outline text="可以不设定【switch】之后的表达式，这种情况下，整个【switch】结构与多个【if...else...】的逻辑作用相同"></outline>
+					</outline>
+					<outline text="for循环的几种格式？">
+						<outline text="for a &lt;= 5 {}"></outline>
+						<outline text="for i := 1; i &lt;= 5; i++ {}"></outline>
+						<outline text="for {}：无限循环，使用break和continue语句控制循环"></outline>
+						<outline text="for _, item := range myarr {}：range会返回索引和数据，所以用不到的索引可以用占位符接收"></outline>
+					</outline>
+					<outline text="goto语句是什么？">
+						<outline text="goto后接一个标签，然后跳转到标签位置处（后接冒号）继续执行"></outline>
+					</outline>
+					<outline text="goto语句注意事项？">
+						<outline text="goto与标签之间不能有变量声明"></outline>
+					</outline>
+					<outline text="defer语句的作用及使用方式？">
+						<outline text="defer后面接一个函数的调用，实现将这个函数的调用延迟到当前函数结束之后"></outline>
+					</outline>
+					<outline text="defer语句的特点？">
+						<outline text="defer的函数调用传递的参数，并不会收到当前函数后面语句的影响，但如果defer后面跟的是匿名函数，则会接收最后的变量值"></outline>
+						<outline text="一个函数里多次调用defer，最后这些defer是以类似栈的方式反序调用defer的"></outline>
+						<outline text="defer在return之后执行"></outline>
+					</outline>
+					<outline text="为什么要有defer？">
+						<outline text="在需要释放资源的情况中，没有defer时需要每次在return时调用一次释放资源的代码，使用defer语句只需要调用一次代码就可以了"></outline>
+					</outline>
+				</outline>
+				<outline text="异常机制">
+					<outline text="什么是panic?">
+						<outline text="panic用于不可以恢复的错误"></outline>
+						<outline text="panic退出前会执行defer指定的内容"></outline>
+					</outline>
+					<outline text="panic VS os.Exit？">
+						<outline text="os.Exit退出时不会调用defer指定的函数"></outline>
+						<outline text="os.Exit退出时不输出当前调用栈信息"></outline>
+					</outline>
+					<outline text="recover怎样使用？">
+						<outline text="recover只能在defer域中使用，在其他地方是不工作的"></outline>
+						<outline text="recover函数能够捕捉panic的信息作为返回值返回"></outline>
+						<outline text="recover函数的目的在于在程序宕机前对程序做一些处理（保存某些信息等）"></outline>
+					</outline>
+					<outline text="recover使用不当产生的问题？">
+						<outline text="形成僵尸服务进程（活着但不提供服务），导致health check失效"></outline>
+						<outline text="“Let it Crash”往往是恢复不确定性错误的最好方法"></outline>
+					</outline>
+					<outline text="panic和recover函数的特点？">
+						<outline text="调用panic函数宕机后，只会执行当前协程的defer"></outline>
+					</outline>
+					<outline text="Go的错误机制与其他语言的差异？">
+						<outline text="没有异常机制"></outline>
+						<outline text="【error】类型实现了【error】接口"></outline>
+						<outline text="可以通过【errors.New】来快速创建错误实例"></outline>
+					</outline>
+				</outline>
+				<outline text="语句块与作用域">
+					<outline text="什么是显示语句块？">
+						<outline text="用花括号括起来的一系列语句"></outline>
+					</outline>
+					<outline text="什么是隐式语句块？">
+						<outline text="就是在隐式语句块这个区域中，其声明的变量的作用域就只在该区域"></outline>
+					</outline>
+					<outline text="隐式语句块有哪些？">
+						<outline text="主语句块：包括所有源码，对应内置作用域"></outline>
+						<outline text="包语句块：包括该包中所有的源码（一个包可能会包括一个目录下的多个文件），对应包级作用域"></outline>
+						<outline text="文件语句块：包括该文件中的所有源码，对应文件级作用域"></outline>
+						<outline text="for 、if、switch等语句本身也在它自身的隐式语句块中，对应局部作用域"></outline>
+					</outline>
+					<outline text="四种作用域？">
+						<outline text="内置作用域：不需要自己声明，所有的关键字和内置类型、函数都拥有全局作用域"></outline>
+						<outline text="包级作用域：必須函数外声明，在该包内的所有文件都可以访问"></outline>
+						<outline text="文件级作用域：不需要声明，导入即可。一个文件中通过import导入的包名，只在该文件内可用"></outline>
+						<outline text="局部作用域：在自己的语句块内声明，包括函数，for、if 等语句块，或自定义的 {} 语句块形成的作用域，只在自己的局部作用域内可用"></outline>
+					</outline>
+					<outline text="作用域的特点？">
+						<outline text="低层作用域可以访问高层作用域"></outline>
+						<outline text="同一层作用域相互隔离"></outline>
+						<outline text="低层作用域声明的变量会覆盖高层作用域声明的变量"></outline>
+					</outline>
+					<outline text="静态作用域与动态作用域？">
+						<outline text="静态作用域就是变量的作用范围不变，动态作用域会在某种情况下改变，比如shell语言"></outline>
+					</outline>
+				</outline>
+				<outline text="函数">
+					<outline text="函数与其他语言的区别？">
+						<outline text="可以有多个返回值"></outline>
+						<outline text="所有参数都是值传递：slice、map、channel会有传引用的错觉"></outline>
+						<outline text="函数可以作为变量的值"></outline>
+						<outline text="函数可以作为参数和返回值"></outline>
+					</outline>
+					<outline text="可变参数格式？">
+						<outline text="![](https://gitee.com/mr-peng2333/image-storage/raw/master/img/20211021075320.png)"></outline>
+					</outline>
+				</outline>
+			</outline>
+			<outline text="面向对象">
+				<outline text="对象">
+					<outline text="怎样定义结构体？">
+						<outline text="type &lt;struct_name&gt; struct { &lt;attr_name&gt; &lt;attr_type&gt;...}"></outline>
+						<outline text="相邻属性类型相同可以合并在一起写"></outline>
+					</outline>
+					<outline text="怎样声明结构体变量？">
+						<outline text="a := Student { name : &quot;Dale&quot;,...}"></outline>
+						<outline text="最后一个属性和右花括弧不在同一行时，【,】不能省略，反之就可以省略"></outline>
+						<outline text="字段名要么全写，要么全不写"></outline>
+						<outline text="初始化结构体时，未赋值的字段自动赋予类型零值"></outline>
+					</outline>
+					<outline text="什么是绑定方法？">
+						<outline text="Go的结构体内是不能声明方法的，Go通过一种将结构体实例与方法绑定的方式类似的实现结构体方法，在方法内部可以访问绑定实例的属性"></outline>
+					</outline>
+					<outline text="绑定方法的两种方式？">
+						<outline text="func (e Employee) String() string {}：这种定义方式在实例对应方法被调用时，实例成员会进行值复制"></outline>
+						<outline text="func (e *Employee) String() string {}：这种定义方法可以避免内存拷贝，在方法中修改实例值会影响到实例"></outline>
+					</outline>
+					<outline text="Go如何实现继承？">
+						<outline text="Go是不支持继承的，Go可以通过结构体间的组合来实现继承"></outline>
+						<outline text="在一个定义结构体时，将另一个结构体作为一个匿名字段，这样就拥有了另一个结构体的全部属性"></outline>
+					</outline>
+					<outline text="匿名结构体嵌套的方法访问优先级？">
+						<outline text="优先自身结构体的方法，自身结构体方法能够调用嵌套结构体的方法，嵌套结构体的方法不能调用自身结构体的方法"></outline>
+					</outline>
+					<outline text="Go怎样实现方法的权限控制？">
+						<outline text="当方法首字母大写时，该方法对所有的包都是public的"></outline>
+						<outline text="当首字母小写时，这个方法是private的，其他包没法任意调用"></outline>
+					</outline>
+					<outline text="三种实例化方法？">
+						<outline text="正常实例化"></outline>
+						<outline text="使用new：xm := new(Profile)"></outline>
+						<outline text="使用&amp;：var xm *Profile = &amp;Profile{}"></outline>
+					</outline>
+					<outline text="什么是选择器？">
+						<outline text="从结构体对象中取得属性值，使用【.】操作符，这个操作符就是选择器"></outline>
+					</outline>
+					<outline text="选择器的一个妙用？">
+						<outline text="当对象是结构体指针时，想要取得这个对象的属性值，正常情况需要【*】取值，而我们可以省去这一步操作，因为选择器【.】能够直接解引用"></outline>
+					</outline>
+					<outline text="怎样定义接口？">
+						<outline text="type Phone interface {call()}"></outline>
+					</outline>
+					<outline text="怎样实现接口？">
+						<outline text="一个类型/结构体实现了接口的全部方法，就称这个类型/结构体实现了该接口"></outline>
+					</outline>
+					<outline text="什么是接口？">
+						<outline text="在Go中，接口就是方法签名的集合"></outline>
+					</outline>
+					<outline text="怎样定义tag？">
+						<outline text="Tag 由反引号包含，由一对或几对的键值对组成，通过空格来分割键值"></outline>
+					</outline>
+					<outline text="怎样获取字段？（反射）">
+						<outline text="field := reflect.TypeOf(obj).FieldByName(&quot;Name&quot;)"></outline>
+						<outline text="field := reflect.ValueOf(obj).Type().Field(i) // i 表示第几个字段"></outline>
+						<outline text="field := reflect.ValueOf(&amp;obj).Elem().Type().Field(i) // i 表示第几个字段"></outline>
+					</outline>
+					<outline text="怎样获取tag？">
+						<outline text="先获取对应的字段field"></outline>
+						<outline text="tag := field.tag"></outline>
+					</outline>
+					<outline text="怎样获取tag的键值对？（在获取到tag后）">
+						<outline text="labelValue := tag.Get(&quot;label&quot;)"></outline>
+						<outline text="labelValue,ok := tag.Lookup(&quot;label&quot;)"></outline>
+						<outline text="Get是对LookUp的简单封装，没有结果时返回空字符串"></outline>
+					</outline>
+					<outline text="什么是tag？">
+						<outline text="在结构体中，每个字段都由名字和字段类型组成，除此之外还可以加一个属性，用反引号包起来的字符串，称之为tag，也就是标签"></outline>
+					</outline>
+				</outline>
+				<outline text="接口">
+					<outline text="什么是空接口？">
+						<outline text="空接口是特殊形式的接口，它不包含任何方法"></outline>
+						<outline text="接口有两个属性，一个是类型，一个是值，空接口两者都是【nil】"></outline>
+					</outline>
+					<outline text="怎样使用空接口？">
+						<outline text="使用【interface{}】作为类型声明一个实例，这个实例可以承载任意类型的值"></outline>
+						<outline text="使用空接口作为函数的参数，可以让函数接收任意类型的值。接收任意个任意类型的值：【paras ...interface{}】">
+							<outline text="使用空接口接收任意类型的参数时，它的静态类型是【interface{}】，动态类型未知，需要使用类型断言才能判断"></outline>
+						</outline>
+						<outline text="声明接收任意类型的array、slice、map、struct">
+							<outline text="空接口承接数组或切片后，该对象无法再进行切片"></outline>
+						</outline>
+					</outline>
+					<outline text="什么是类型断言？">
+						<outline text="英文名：Type Assertion"></outline>
+						<outline text="它可以检查【i】是否为【nil】；检查【i】存储的值是否为某个类型"></outline>
+					</outline>
+					<outline text="类型断言的使用方式？">
+						<outline text="【t := i.(T)】：可以断言一个接口对象【i】是不是【nil】，并且接口对象【i】存储的值类型为【T】，断言成功返回其值，失败出发【panic】"></outline>
+						<outline text="【t, ok := i.(T)】：断言成功时，返回其值，【ok】值为【true】；断言失败不会出发【panic】，而是将【ok】值为【false】，【t】为零值"></outline>
+					</outline>
+					<outline text="【type switch】断言如何使用？">
+						<outline text="【switch x := i.(type) { case int:...}】"></outline>
+					</outline>
+					<outline text="类型断言注意项？">
+						<outline text="仅能对静态类型为空接口【interface{}】的对象进行断言"></outline>
+					</outline>
+					<outline text="接口的三个“潜规则”？">
+						<outline text="对方法调用的限制：接口变量不能调用接口中未声明的方法"></outline>
+						<outline text="调用函数时的隐式转换：函数调用都是值传递的，变量会在方法调用前进行类型转换"></outline>
+						<outline text="类型断言中的隐式转换：断言完成后，会返回一个静态类型为你断言类型的对象"></outline>
+					</outline>
+					<outline text="怎样显示转换为接口类型？">
+						<outline text="【b := interface{}(a)】"></outline>
+					</outline>
+					<outline text="Go接口与其他语言的区别？">
+						<outline text="接口为非入侵性的，实现不依赖于接口定义"></outline>
+						<outline text="所以接口的定义可以包含在接口使用者包内"></outline>
+					</outline>
+					<outline text="实例对象赋值给自己所实现的接口的变量时需要注意什么？">
+						<outline text="只能使用实例的指针赋值给接口变量，包括传参是也只能传递指针类型"></outline>
+					</outline>
+					<outline text="Go接口的最佳实践（怎样设计接口）？">
+						<outline text="倾向使用小接口定义，很多接口只包含一个方法"></outline>
+						<outline text="较大的接口定义，由多个小接口定义组合而成"></outline>
+						<outline text="只依赖于必要功能的最小接口"></outline>
+					</outline>
+				</outline>
+				<outline text="反射">
+					<outline text="什么是反射？">
+						<outline text="为了区分变量值类型，将反射前环境称为“真实世界”，反射后环境称为“反射世界”，这只是一种比喻"></outline>
+						<outline text="“反射世界”中，可以获取一个对象的类型、属性及方法的能力"></outline>
+					</outline>
+					<outline text="两种类型【Type】和【Value】？">
+						<outline text="在“反射世界”中，【reflect.Type】、【reflect.Value】（在【reflect包中】）两种类型是整个反射的核心，对应着“真实世界”的【type】和【value】"></outline>
+						<outline text="源码上，【reflect.Type】以接口形式存在；【reflect.Value】以结构体形式存在，并且接收了很多方法"></outline>
+						<outline text="“真实世界”里，【type】和【value】一起组成接口变量；“反射世界”里，【type】和【value】是分开的，由【reflect.Type】和【reflect.Value】来表现"></outline>
+					</outline>
+					<outline text="反射三定律？">
+						<outline text="反射可以将接口类型变量转换为“反射类型对象”"></outline>
+						<outline text="反射可以将“反射类型对象”转换为接口类型变量"></outline>
+						<outline text="如果要修改“反射类型对象”，其类型必须是可写的"></outline>
+					</outline>
+					<outline text="怎样实现接口变量到反射对象的转换？">
+						<outline text="【reflect.TypeOf(i)】：获取接口值的类型"></outline>
+						<outline text="【reflect.ValueOf(i)】：获取接口值的值"></outline>
+						<outline text="两个方法接收的是【interface{}】类型"></outline>
+						<outline text="两个方法返回的对象，称之为反射对象"></outline>
+					</outline>
+					<outline text="怎样实现反射对象到接口变量的转换？">
+						<outline text="【i := v.Interface()】"></outline>
+						<outline text="【reflect.Value】的结构体会接收【Interface()】方法，返回一个【interface{}】类型的变量"></outline>
+						<outline text="只有【Value】才能逆向转换，【Type】不能"></outline>
+					</outline>
+					<outline text="怎样检测反射对象是否可以修改？（具有【可写性】）">
+						<outline text="使用【reflect.TypeOf()】、【reflect.ValueOf()】时接收的不是接口变量的指针，反射世界的变量值只是真实世界的拷贝，不是接收变量指针创建的反射对象，是不具备【可写性】的"></outline>
+						<outline text="是否具备【可写性】可以用【CanSet()】来获取得知"></outline>
+						<outline text="对不具备【可写性】的反射对象进行修改，是不合法的，回报错"></outline>
+					</outline>
+					<outline text="使反射对象具备【可写性】需要注意？">
+						<outline text="创建反射对象时传入变量的指针"></outline>
+						<outline text="使用【Elem()】函数返回指针指向的数据"></outline>
+					</outline>
+					<outline text="如何修改具有【可写性】反射对象的值？">
+						<outline text="通过【Set】单词开头的方法修改"></outline>
+					</outline>
+					<outline text="怎样使用获取类别函数【Kind()】？">
+						<outline text="【Kind()】可以获取反射对象对应的接口变量的基础类型"></outline>
+						<outline text="【Kind】和【Type】是有区别的，【Kind】表示更基础、范围更广的分类，通过源码可以得知其表示的都是Go原生的基本类型（25种合法类型），不包含自定义类型"></outline>
+						<outline text="【Type】和【Value】对象都可以使用【Kind()】方法"></outline>
+					</outline>
+					<outline text="反射对象类型转换函数？">
+						<outline text="【Int()】"></outline>
+						<outline text="【Float()】"></outline>
+						<outline text="【String()】"></outline>
+						<outline text="【Bool()】"></outline>
+						<outline text="【Pointer()】"></outline>
+						<outline text="【Interface()】"></outline>
+					</outline>
+					<outline text="反射对象对切片的操作？">
+						<outline text="【Slice()】【Slice3()】：对切片再切片，返回的还是反射对象"></outline>
+						<outline text="【Set()】【Append()】：更新切片"></outline>
+					</outline>
+					<outline text="反射对象对属性的操作？">
+						<outline text="【NumField()】【Field()】"></outline>
+					</outline>
+					<outline text="反射对象对方法的操作？">
+						<outline text="【NumMethod()】【Method()】：要获取【Name】，注意使用【reflect.TypeOf()】"></outline>
+						<outline text="【v.Method(i).Call(nil)】：动态调用函数，使用索引且无参数注意使用【ValueOf()】"></outline>
+						<outline text="【v.MethodByName(&lt;method_name&gt;).Call(nil)】：动态调用函数，使用函数名无参数"></outline>
+						<outline text="【v.MethodByName(&lt;method_name&gt;).Call(intput)】：动态调用函数，使用函数名有参数，【input】为反射对象类型切片，包含调用方法的所有参数"></outline>
+					</outline>
+				</outline>
+				<outline text="静态类型与动态类型">
+					<outline text="什么是静态类型？">
+						<outline text="静态类型就是变量声明时候的类型，编码时肉眼可见的类型"></outline>
+					</outline>
+					<outline text="什么是动态类型？">
+						<outline text="程序运行时系统才能看见的类型，比如空接口【interface{}】"></outline>
+					</outline>
+					<outline text="接口的两种类型？">
+						<outline text="![](https://gitee.com/mr-peng2333/image-storage/raw/master/img/20211015101548.png)"></outline>
+						<outline text="![](https://gitee.com/mr-peng2333/image-storage/raw/master/img/20211015101734.png)"></outline>
+					</outline>
+					<outline text="反射的必要性？">
+						<outline text="由于动态类型的存在，在一个函数中接收的参数类型无法预先知晓，此时需要对参数进行反射，然后根据不同的类型做不同的处理"></outline>
+					</outline>
+				</outline>
+				<outline text="关键字make和new">
+					<outline text="new函数？">
+						<outline text="只能传递一个参数，为任意类型"></outline>
+						<outline text="new函数做的事情：分配内存；设置零值；返回指针"></outline>
+					</outline>
+					<outline text="make函数？">
+						<outline text="用来为slice、map或chan类型分配内存和初始化一个对象"></outline>
+						<outline text="不返回指针，返回值依赖于传入的类型"></outline>
+						<outline text="这三种类型都是引用类型，所以需要初始化（size和cap），不是置为零值"></outline>
+					</outline>
+				</outline>
+				<outline text="空结构体">
+					<outline text="空结构体的妙用？">
+						<outline text="空结构体是一个不占用空间的对象，这与它是否接收方法无关，在某些时候可以作占位符用，合理使用可以减少内存空间占用"></outline>
+					</outline>
+				</outline>
+			</outline>
+			<outline text="项目管理">
+				<outline text="包">
+					<outline text="什么是包？">
+						<outline text="基本复用模块单元：以首字母大写来表明可被包外代码访问（结构体、方法等）"></outline>
+						<outline text="代码的【package】可以和所在目录不一致"></outline>
+						<outline text="同一目录里的Go代码的【package】要保持一致"></outline>
+					</outline>
+					<outline text="导入包的两种方式？">
+						<outline text="单行导入：import &quot;fmt&quot;"></outline>
+						<outline text="多行导入：import(...)"></outline>
+					</outline>
+					<outline text="为包起别名的场景以及如何起别名？">
+						<outline text="导入包名相同的两个包"></outline>
+						<outline text="导入包名很长的包"></outline>
+						<outline text="包名和本地变量起冲突"></outline>
+						<outline text="【import &lt;alias_name&gt; &lt;package_name&gt;】"></outline>
+					</outline>
+					<outline text="函数使用频繁的包如何直接使用其函数？">
+						<outline text="【import . &lt;package_name&gt;】"></outline>
+						<outline text="使用此方式可能导致导入包的函数和自己定义的函数冲突"></outline>
+					</outline>
+					<outline text="包的初始化(【init()】方法)？">
+						<outline text="在【main()】执行前，所有依赖的【package】的【init()】方法都会被执行"></outline>
+						<outline text="不同包的【init()】方法按照包导入的依赖关系决定执行顺序"></outline>
+						<outline text="在一个包引用链中，包的初始化是深度优先的"></outline>
+						<outline text="每个包或源文件可以有多个【init】函数"></outline>
+						<outline text="【init()】不能有入参和返回值"></outline>
+						<outline text="【init()】不能被其他函数调用"></outline>
+						<outline text="同一个包内多个【init()】的顺序是不受保证的"></outline>
+						<outline text="在【init()】之前，会先初始化包内的常量和变量（常量先于变量）"></outline>
+					</outline>
+					<outline text="包的匿名导入？">
+						<outline text="导入的包未被使用编译是会报错的"></outline>
+						<outline text="只使用导入包的【init()】函数使用匿名导入【import _ &lt;package_name&gt;】，下划线为空白标识符，不能被访问"></outline>
+					</outline>
+					<outline text="导入的是路径还是包？">
+						<outline text="导入的是路径，导入后可以使用该路径下的所有包"></outline>
+					</outline>
+					<outline text="绝对导入和相对导入？">
+						<outline text="在【Go 1.10】前不支持相对导入"></outline>
+						<outline text="绝对导入：从【$GOPATH/src】或【$GOROOT】或者【$GOPATH/pkg/mod】目录下搜索包并导入"></outline>
+						<outline text="从当前目录搜索包导入（使用相对目录）"></outline>
+						<outline text="使用相对导入是，项目不能放在【$GOPATH/src】下"></outline>
+						<outline text="Go Modules 不支持相对导入，在你开启 GO111MODULE 后，无法使用相对导入"></outline>
+					</outline>
+					<outline text="什么是【vendor】？">
+						<outline text="【vendor】目录是通过【go mod vendor】命令生成的，这个命令会将项目依赖全部打包到你的项目目录下的【vendor】文件夹中"></outline>
+					</outline>
+					<outline text="包导入优先级？">
+						<outline text="使用【vendor】：先在【vendor】中找，然后在【$GOROOT/src】中找，最后在【$GOPATH/src】中找，都找不到就报错"></outline>
+						<outline text="使用【modules】：先在【$GOPATH/pkg/mod】中找，然后导入包如果有域名就去网站中找，没有域名就去【$GOROOT】中找"></outline>
+					</outline>
+					<outline text="怎样下载别人的包到本地？">
+						<outline text="【go get -u github.com/easierway/concurrent_map】"></outline>
+						<outline text="【-u】此参数表示运行此命令时抓取最新版本的包到本地，没有此参数则本地有包则不抓取"></outline>
+					</outline>
+				</outline>
+				<outline text="Go Modules">
+					<outline text="GOPATH组成？">
+						<outline text="【bin】：存放编译后生成的二进制可执行文件"></outline>
+						<outline text="【pkg】：存放编译后生成的【.a】文件"></outline>
+						<outline text="【src】：存放项目的源代码，可以是你自己写的代码，也可以是你 go get 下载的包"></outline>
+					</outline>
+					<outline text="什么是GOPATH模式？">
+						<outline text="将你的包或者别人的包全部放在【$GOPATH/src】目录下进行管理的方式"></outline>
+					</outline>
+					<outline text="GOPATH模式未解决的依赖问题？">
+						<outline text="同一环境下，不同项目使用同一包的不同版本"></outline>
+						<outline text="无法管理对包的特定版本的依赖"></outline>
+					</outline>
+					<outline text="为什么会有【go vendor】模式？">
+						<outline text="解决【GOPATH】模式下不同项目无法使用多个版本库"></outline>
+						<outline text="使用【GOPATH】模式，所有项目共享一个【GOPATH】，导入依赖时，都就来这里找，所以【GOPATH】模式下只能有一个版本的第三方库"></outline>
+					</outline>
+					<outline text="什么是【go vendor】模式？">
+						<outline text="在每个项目下创建【vendor】目录，项目所需要的依赖只会下载到自己的【vendor】目录下，项目之间依赖包互不影响"></outline>
+						<outline text="在【Go 1.6】之前，需要手动设置环境变量"></outline>
+					</outline>
+					<outline text="【vendor】模式下查找依赖包的目录顺序？">
+						<outline text="当前包下的【vendor】目录"></outline>
+						<outline text="向上级目录查找，知道找到【src】下的【vendor】目录"></outline>
+						<outline text="在【GOPATH】下面查找依赖包"></outline>
+						<outline text="在【GOROOT】目录下查找"></outline>
+					</outline>
+					<outline text="依赖管理工具【gilde】的安装和使用？">
+						<outline text="安装：【brew install glide】"></outline>
+						<outline text="使用：到对应的项目下，打开终端，输入命令【glide init】，会生成【glide.yaml】文件，此时会将项目的依赖包写入此文件，再运行【glide install】命令，会在该目录下生成【vendor】目录，并将【glide.yaml】中依赖的网络包（本地包不会下载）下载到其中"></outline>
+					</outline>
+					<outline text="怎样开启【go mod】模式？">
+						<outline text="设置环境变量的值：【go env -w GO111MODULE=&quot;on/off/auto&quot;】，其中【auto】为项目在【$GOPATH/src】外且项目根目录有【go.mod】文件时，自动开启模块支持"></outline>
+					</outline>
+				</outline>
+			</outline>
+			<outline text="并发编程">
+				<outline text="协程机制">
+					<outline text="协程被系统中断提高并发能力的机制？">
+						<outline text="当一个协程被系统中断，比如IO需要等待的时候，Processor会把自己移到另一个可使用的系统线程当中，继续执行它所挂的队列里的其他协程"></outline>
+						<outline text="当中断的协程被唤醒，它会把自己加入到其中某一个Processor的协程等待队列里或全局等待队列当中"></outline>
+						<outline text="当一个协程被中断时，它在寄存器的运行状态会保存到这个协程对象里，当协程重新获得运行机会时，这些状态又会重新写入寄存器，然后继续运行"></outline>
+					</outline>
+					<outline text="Thread VS Groutine?">
+						<outline text="创建时默认的【stack】的大小：JDK5以后Java Thread stack默认为1M；Groutine的Stack初始化为2K"></outline>
+						<outline text="和KSE（Kernel Space Entity）的对应关系：Java Thread是1:1；Groutine是M:N"></outline>
+					</outline>
+					<outline text="Groutine的调度机制？">
+						<outline text="![](https://gitee.com/mr-peng2333/image-storage/raw/master/img/20211022161530.png)"></outline>
+						<outline text="Processor是Go实现协程处理器，每个Processor都有一个协程等待队列，也有一个在运行中的协程"></outline>
+					</outline>
+					<outline text="Groutine为什么在线程切换上比Thread效率高？">
+						<outline text="由于Thread与KSE（系统线程）的对应关系为1:1，所以当Thread涉及切换时，KSE也会切换，这个切换的消耗很大"></outline>
+						<outline text="而Groutine与KSE的对应关系为M:N，处在同一个KSE下的Groutine切换消耗是很小的"></outline>
+					</outline>
+					<outline text="Go怎样保证一个Groutine不会等待很长时间？">
+						<outline text="Go的守护线程有一个对每个Processor（Go语言实现的协程处理器）完成Groutine的计数，当一段时间后发现计数没有变化，就会往这个Groutine的任务栈添加一个特别的标记，当Groutine运行遇到非内联函数就会读到这个标记，就会把自己中断下来，等候队列的队尾，然后切换到别的协程继续运行"></outline>
+					</outline>
+				</outline>
+				<outline text="共享内存并发机制">
+					<outline text="为什么在多个协程中增加count的值得不到预期的值？">
+						<outline text="![](https://gitee.com/mr-peng2333/image-storage/raw/master/img/20211023092931.png)"></outline>
+						<outline text="在上述代码中，协程在执行时，先读取count再更新count，这个过程不具备原子性（同时完成）"></outline>
+						<outline text="即当一个协程读取count值为100，还没有更新count，此时另一个协程读取到count的值为100并更新为101，此时还未更新值的进程开始更新count也是更新为101，所以count得不到预期的值"></outline>
+					</outline>
+					<outline text="什么是互斥锁（Mutex）？">
+						<outline text="互斥锁使得同一时刻仅能有一个协程能对锁住的内容操作"></outline>
+					</outline>
+					<outline text="怎样添加互斥锁？">
+						<outline text="![](https://gitee.com/mr-peng2333/image-storage/raw/master/img/20211023093757.png)"></outline>
+					</outline>
+					<outline text="什么是WaitGroup？">
+						<outline text="WaitGroup用于等待指定的子协程完成后才结束当前协程，防止父协程执行过快，一些子协程没有执行完"></outline>
+					</outline>
+					<outline text="怎样使用WaitGroup？">
+						<outline text="![](https://gitee.com/mr-peng2333/image-storage/raw/master/img/20211023095145.png)"></outline>
+					</outline>
+					<outline text="什么是读写锁（RWMutex）？">
+						<outline text="RWMutex将对资源的访问分为读操作和写操作，当有一个协程在对资源进行读操作时，写操作会阻塞"></outline>
+						<outline text="当一个协程对资源进行写操作时，其他读操作和写操作都会阻塞"></outline>
+						<outline text="当有多个读操作同时进行时，相互之间不会阻塞，也就是说当存在大量读操作时，使用RWMutex锁的效率比Mutex高"></outline>
+					</outline>
+					<outline text="为什么go test测试输出结果没有变化以及解决方案？">
+						<outline text="场景：使用go test进行测试，没有修改代码的情况下，重复多次测试，发现测试结果没有变化。如创建10个协程，5个读锁协程，5个写锁协程，输出的数据没有变化"></outline>
+						<outline text="情况说明：从Go 1.10开始，成功的包的测试结果将被缓存"></outline>
+						<outline text="解决方案：禁用缓存的命令【go test -v -count=1 go_file.go】，【-v】是配置测试时显示打印信息，vscode中在【settings.json】中添加【&quot;go.testFlags&quot;:[&quot;-v&quot;, &quot;-count=1&quot;]】配置"></outline>
+					</outline>
+				</outline>
+				<outline text="CSP并发机制">
+					<outline text="什么是CSP？">
+						<outline text="英文全称：Communicating sequential process"></outline>
+						<outline text="是指依赖于一个通道来完成两个通讯实体之间的协调"></outline>
+					</outline>
+					<outline text="CSP VS Actor Model？">
+						<outline text="和Actor的直接通讯不同，CSP模式则是通过Channel进行通讯的，更松耦合一些"></outline>
+						<outline text="Go中channel是有容量限制并且独立处理Groutine，而如Erlang，Actor模式中的mailbox容量是无限的，接收进程也总是被动的处理信息"></outline>
+					</outline>
+					<outline text="Channel的机制？">
+						<outline text="第一种机制：通讯的两方必须同时在channel上才能完成这次交互，任何一方不在的时候，另一方都会被阻塞在那里等待，直到另一方完成这个交互"></outline>
+						<outline text="第二种机制（buffered channel）：给channel设定一个容量，在容量没有满之前放消息的人都是可以往里面放消息的，容量满了，就必须等待接收消息的拿掉一个消息，容量空出来，才能继续往通道放消息；对与接收消息的人来说，只要通道里有消息，就可以拿消息往下执行，如果没消息就必须等待，直到有消息才能往下执行"></outline>
+					</outline>
+					<outline text="两种机制的Channel如何声明？">
+						<outline text="ch := make(chan string)"></outline>
+						<outline text="buffered channel：【ch := make(chan string, 2)】，【string】为通道存储的消息类型，【2】为缓冲区大小，省略是默认为【0】"></outline>
+					</outline>
+					<outline text="怎样查看channel缓冲区大小？">
+						<outline text="【cap(channel)】"></outline>
+					</outline>
+				</outline>
+				<outline text="多路选择和超时控制">
+					<outline text="什么是多路选择？">
+						<outline text="![](https://gitee.com/mr-peng2333/image-storage/raw/master/img/20211024153458.png)"></outline>
+						<outline text="每个case后面跟的都是一个阻塞事件，比如从一个channel上等待消息"></outline>
+						<outline text="当运行select时，只要任一case后面阻塞事件处于非阻塞状态，就会运行case后面定义的语句"></outline>
+						<outline text="当有多个非阻塞case时，运行case的选择与case的定义顺序无关"></outline>
+						<outline text="当所有case都处于阻塞状态，就会执行default"></outline>
+					</outline>
+					<outline text="什么是超时控制？">
+						<outline text="![](https://gitee.com/mr-peng2333/image-storage/raw/master/img/20211024154312.png)"></outline>
+						<outline text="当1秒过后，【retCh】通道还没有返回消息，就会执行第二个case"></outline>
+						<outline text="超时控制就是防止一直等待通道消息"></outline>
+					</outline>
+				</outline>
+				<outline text="channel的关闭和广播">
+					<outline text="channel的关闭？">
+						<outline text="向关闭的channel发送数据，会导致panic"></outline>
+						<outline text="【v, ok := &lt;- ch】【ok】为bool值，true表示正常接受，false表示通道关闭。如果没有接收ok值，那么通道关闭后，接收者都会从阻塞状态返回并收到通道类型的零值"></outline>
+					</outline>
+					<outline text="channel的广播？">
+						<outline text="所有的channel接收者都会在channel关闭时，立刻从阻塞等待中返回且接收的bool值为false。这个广播机制常被利用，进行向多个订阅者发送信号。如退出信号"></outline>
+					</outline>
+				</outline>
+				<outline text="任务的取消">
+					<outline text="取消任务的流程？">
+						<outline text="通过通道传递空结构体表示取消任务的标识符，如果要取消所有任务，应关闭通道"></outline>
+						<outline text="使用多路选择，如果从通道收到消息返回true，表示取消任务，否则返回false"></outline>
+						<outline text="任务中持续判断是否取消任务"></outline>
+					</outline>
+				</outline>
+				<outline text="context和任务取消">
+					<outline text="关联任务的取消？">
+						<outline text="![](https://gitee.com/mr-peng2333/image-storage/raw/master/img/I2021-10-25T09:53:26.362+0800.jpg)"></outline>
+						<outline text="对于叶子处于叶子结点的任务直接取消即可，对于处于中间的任务，取消它需要将其自任务也取消"></outline>
+					</outline>
+					<outline text="怎样使用context取消任务？">
+						<outline text="根context：通过【context.Background()】建立"></outline>
+						<outline text="子context：【context.WithCancel(parentContext)】【ctx, cancel := context.WithCancel(context.BackGround())】创建"></outline>
+						<outline text="当前Context被取消时，基于它的子context都会被取消"></outline>
+						<outline text="接收取消通知【&lt;- ctx.Done()】"></outline>
+					</outline>
+				</outline>
+			</outline>
+			<outline text="常见并发任务">
+				<outline text="只执行一次">
+					<outline text="【只执行一次】常见的任务场景？">
+						<outline text="单例模式（懒汉式）"></outline>
+					</outline>
+					<outline text="Go语言怎样实现单例模式？">
+						<outline text="![](https://gitee.com/mr-peng2333/image-storage/raw/master/img/20211026071926.png)"></outline>
+						<outline text="使用【once.Do()】方法，使得其参数只运行一次"></outline>
+					</outline>
+				</outline>
+				<outline text="仅需任意任务完成">
+					<outline text="【仅需任意任务完成】的应用场景？">
+						<outline text="当用户请求某个搜索时，我们向百度、谷歌等发起搜索，直到有一个有了搜索结果，就可以返回给用户了，不用将所有的都返回"></outline>
+					</outline>
+					<outline text="【仅需任意任务完成】的简单实现？">
+						<outline text="![](https://gitee.com/mr-peng2333/image-storage/raw/master/img/20211026080653.png)"></outline>
+					</outline>
+				</outline>
+				<outline text="所有任务完成">
+					<outline text="【所有任务完成】的简单实现？">
+						<outline text="![](https://gitee.com/mr-peng2333/image-storage/raw/master/img/20211026081452.png)"></outline>
+						<outline text="也可以采用【WaitGroup】的方式实现"></outline>
+					</outline>
+				</outline>
+				<outline text="对象池">
+					<outline text="对象池实现？">
+						<outline text="使用【buffered channel】实现对象池"></outline>
+						<outline text="![](https://gitee.com/mr-peng2333/image-storage/raw/master/img/20211026092802.png)"></outline>
+					</outline>
+				</outline>
+				<outline text="sync.pool对象缓存">
+					<outline text="sync.Pool对象获取？">
+						<outline text="![](https://gitee.com/mr-peng2333/image-storage/raw/master/img/20211026100508.png)"></outline>
+						<outline text="processor协程调度处理器"></outline>
+						<outline text="sync.Pool在获取对象时，会先从当前协程所在的processor获取私有对象（私有对象只有一个，并不是池）"></outline>
+						<outline text="私有对象不存在，尝试从当前processor的共享池获取"></outline>
+						<outline text="如果当前processor共享池也是空的，那么就尝试去其他Processor的共享池获取"></outline>
+						<outline text="如果所有子池都是空的，最后就用用户指定的New函数产生一个新的对象返回"></outline>
+					</outline>
+					<outline text="sync.Pool对象的放回？">
+						<outline text="![](https://gitee.com/mr-peng2333/image-storage/raw/master/img/20211026100508.png)"></outline>
+						<outline text="如果私有对象不存在则保存为私有对象"></outline>
+						<outline text="如果私有对象存在，放入当前Processor子池的共享池中"></outline>
+					</outline>
+					<outline text="sync.Pool的使用？">
+						<outline text="![](https://gitee.com/mr-peng2333/image-storage/raw/master/img/20211026101132.png)"></outline>
+					</outline>
+					<outline text="sync.Pool对象的生命周期？">
+						<outline text="GC会清除sync.Pool缓存的对象"></outline>
+						<outline text="对象缓存有效期为下一次GC之前"></outline>
+					</outline>
+					<outline text="为什么sync.Pool不能用作对象池？">
+						<outline text="因为sync.Pool的生命周期是不确定的，由GC决定，GC是被系统调用的，对于一个需要长期维护的连接而言，是不可行的"></outline>
+					</outline>
+					<outline text="sync.Pool适用于什么情形？">
+						<outline text="适合于通过复用，降低复杂对象的创建和GC代价"></outline>
+					</outline>
+					<outline text="sync.Pool协程安全吗？">
+						<outline text="协程安全，会有锁的开销"></outline>
+					</outline>
+				</outline>
+			</outline>
+			<outline text="测试">
+				<outline text="单元测试">
+					<outline text="单元测试方法的一般编码方式？">
+						<outline text="![](https://gitee.com/mr-peng2333/image-storage/raw/master/img/20211027081754.png)"></outline>
+					</outline>
+					<outline text="内置的单元测试框架？">
+						<outline text="【Fail】【Error】：该测试失败，该测试继续，其他测试继续执行"></outline>
+						<outline text="【FailNow】【Fatal】：该测试失败，该测试终止，其他测试继续执行"></outline>
+					</outline>
+				</outline>
+				<outline text="Benchmark">
+					<outline text="Benchmark代码框架？">
+						<outline text="![](https://gitee.com/mr-peng2333/image-storage/raw/master/img/20211027094301.png)"></outline>
+					</outline>
+					<outline text="Benchmark输出参数说明？">
+						<outline text="![](https://gitee.com/mr-peng2333/image-storage/raw/master/img/20211027094122.png)"></outline>
+					</outline>
+				</outline>
+				<outline text="BDD">
+					<outline text="什么是BDD？">
+						<outline text="一种开发过程，一个验收测试框架，英文名：Behavior Driven Development"></outline>
+					</outline>
+					<outline text="安装和启动【BDD in Go】？">
+						<outline text="安装：【go get -u github.com/smartystreets/goconvey/convey】"></outline>
+						<outline text="启动WEB UI：【$GOPATH/bin/goconvey】"></outline>
+					</outline>
+				</outline>
+			</outline>
+			<outline text="反射和Unsafe">
+				<outline text="反射编程">
+					<outline text="【reflect.TypeOf】 VS 【reflect.ValueOf】？">
+						<outline text="【reflect.TypeOf】返回类型（reflect.Type）"></outline>
+						<outline text="【reflect.ValuefOf】返回值（reflect.Value）"></outline>
+						<outline text="可以从reflect.Value获得类型"></outline>
+						<outline text="通过【Kind()】来判断类型"></outline>
+					</outline>
+					<outline text="怎样利用反射编写灵活的代码？">
+						<outline text="按名字访问结构的成员：【reflect.ValueOf(*e).FieldByName(&quot;Name&quot;)】"></outline>
+						<outline text="按名字访问结构的方法：【reflect.ValueOf(e).MethodByName(&quot;UpdateAge&quot;).Call([]reflect.Value{reflect.ValueOf(1)})】"></outline>
+					</outline>
+					<outline text="什么是结构体标签（struct tag）？">
+						<outline text="类似于Java的annotation，对结构体字段做标记"></outline>
+						<outline text="![](https://gitee.com/mr-peng2333/image-storage/raw/master/img/20211030091632.png)"></outline>
+					</outline>
+					<outline text="怎样访问struct tag？">
+						<outline text="![](https://gitee.com/mr-peng2333/image-storage/raw/master/img/20211030092136.png)"></outline>
+					</outline>
+				</outline>
+				<outline text="万能程序">
+					<outline text="怎样比较切片、map等不能用【==】比较的类型？">
+						<outline text="![](https://gitee.com/mr-peng2333/image-storage/raw/master/img/20211030093250.png)"></outline>
+					</outline>
+					<outline text="反射编程的优缺点？">
+						<outline text="提高了程序的灵活性"></outline>
+						<outline text="降低了程序的可读性"></outline>
+						<outline text="降低了程序的性能"></outline>
+					</outline>
+				</outline>
+				<outline text="不安全编程">
+					<outline text="不安全编程潜在的危险性？">
+						<outline text="使用【unsafe.Pointer()】能将指针类型强制转换为其他类型"></outline>
+					</outline>
+					<outline text="不安全编程的使用场景？">
+						<outline text="提高性能，和C语言交互时"></outline>
+					</outline>
+				</outline>
+			</outline>
+			<outline text="常见的架构模式实现">
+				<outline text="pip-filter framework"></outline>
+				<outline text="micro-kernel framework"></outline>
+			</outline>
+			<outline text="常见任务">
+				<outline text="内置json解析">
+					<outline text="怎样实现json解析？">
+						<outline text="利用反射实现，通过fieldtag来标识对应的json值"></outline>
+					</outline>
+				</outline>
+				<outline text="easyjson">
+					<outline text="为什么不实用Go内置的json解析？">
+						<outline text="标准库虽然提供了【encoding/json】，但是它主要是通过反射来实现的，所以性能消耗过大"></outline>
+					</outline>
+					<outline text="为什么EasyJson比内置json解析更快？">
+						<outline text="因为EasyJSON采用代码生成而非反射"></outline>
+					</outline>
+					<outline text="EasyJSON的安装和使用？">
+						<outline text="安装：【go get -u github.com/mailru/easyjson/...】"></outline>
+						<outline text="使用：【easyjson -all &lt;结构定义&gt;.go】"></outline>
+					</outline>
+				</outline>
+				<outline text="HTTP服务">
+					<outline text="http的路由规则？">
+						<outline text="URL分为两种，末尾是【/】：表示一个子树，后面可以跟其他子路径；末尾不是【/】，表示一个叶子，固定的路径"></outline>
+						<outline text="以【/】结尾的URL可以匹配它的任何子路径"></outline>
+						<outline text="它采用最长匹配原则，如果有多个匹配，一定采用匹配路径最长的那个进行处理"></outline>
+						<outline text="如果没有找到任何匹配项，会返回404错误"></outline>
+					</outline>
+				</outline>
+				<outline text="构建RESTful服务"></outline>
+			</outline>
+			<outline text="性能调优">
+				<outline text="性能分析工具">
+					<outline text="性能分析前准备（工具安装）？">
+						<outline text="安装【graphviz】：【brew install graphviz】"></outline>
+						<outline text="将【$GOPATH/bin】加入【$PATH】：Mac OS：在【.bash_profile】中修改路径"></outline>
+						<outline text="安装【go-torch】：【go get github.com/uber/go-torch】；下载并复制【flamegraph.pl】（github.com/brendangregg/FlameGraph）至【$GOPATH/bin】路径下"></outline>
+					</outline>
+					<outline text="怎样通过文件输出Profile？">
+						<outline text="![](https://gitee.com/mr-peng2333/image-storage/raw/master/img/20211104084749.png)"></outline>
+						<outline text="在需要性能分析的代码片段中插入需要分析的代码（CPU、内存等），然后【go build &lt;file&gt;】，运行编译后的二进制文件生成profile文件"></outline>
+						<outline text="使用【go tool pprof &lt;编译后的二进制文件名&gt; &lt;profile文件&gt;】命令查看相应的性能分析(二进制文件参数可不添加)，也可以使用【go-torch &lt;profile&gt;】生成火炬图查看"></outline>
+					</outline>
+					<outline text="通过【go test】输出profile？">
+						<outline text="【go test -bench=. -cpuprofile=&lt;filename&gt; -memprofile=&lt;filename&gt;】【filename】是输出的profile的文件名"></outline>
+					</outline>
+					<outline text="怎样通过HTTP方式输出Profile？">
+						<outline text="此方式简单，适用于持续性运行的应用"></outline>
+						<outline text="在应用程序中导入【import _ &quot;net/http/pprof&quot;】，并启动【http server】即可"></outline>
+						<outline text="访问【http://&lt;host&gt;:&lt;port&gt;/debug/pprof】"></outline>
+						<outline text="【go tool pprof http://&lt;host&gt;:&lt;port&gt;/debug/pprof/profile?seconds=10】(默认值为30秒)"></outline>
+						<outline text="【go-torch -seconds 10 http://&lt;host&gt;:&lt;port&gt;/debug/pprof/profile】"></outline>
+					</outline>
+					<outline text="Go支持的多种Profile?">
+						<outline text="【go help testflag】"></outline>
+						<outline text="【https://golang.org/src/runtime/pprof/pprof.go】"></outline>
+					</outline>
+				</outline>
+				<outline text="性能分析示例">
+					<outline text="常见分析指标？">
+						<outline text="Wall Time：挂钟时间，程序或函数运行的绝对时间"></outline>
+						<outline text="CPU Time：保存内存分配，GC的次数、耗时"></outline>
+						<outline text="Block Time"></outline>
+						<outline text="Memory allocation"></outline>
+						<outline text="GC times/time spent"></outline>
+					</outline>
+				</outline>
+				<outline text="别让性能被锁住">
+					<outline text="为什么说“别让性能被锁住”？">
+						<outline text="因为只要使用锁，就会有性能上的开销，比如，加了读锁的读，和不加锁的读，运行时间甚至能够相差一个数量级"></outline>
+					</outline>
+					<outline text="sync.Map的适用场景和实现方式？">
+						<outline text="适合读多写少，且Key相对稳定的环境"></outline>
+						<outline text="采用了空间换时间的方案，并且采用指针的方式间接实现值的映射，所以存储空间会较built-in map 大"></outline>
+					</outline>
+					<outline text="Concurrent Map的适用场景和实现方式？">
+						<outline text="适用于读写都很平凡的情况"></outline>
+						<outline text="通过将Map的锁分为细密度的锁，每个锁锁住Map的部分区域"></outline>
+					</outline>
+				</outline>
+				<outline text="GC友好的代码">
+					<outline text="怎样写GC友好的代码？">
+						<outline text="避免内存分配和复制"></outline>
+					</outline>
+					<outline text="怎样避免内存分配和复制？">
+						<outline text="复杂对象尽量传递引用：数组传递、结构体传递"></outline>
+						<outline text="初始化至合适大小：自动扩容是有代价的"></outline>
+						<outline text="复用内存"></outline>
+					</outline>
+					<outline text="怎样打开GC日志？">
+						<outline text="只要在程序执行之前加上环境变量【GODEBUG=gctrace=1】，如：【GODEBUG=gctrace=1 go test -bench=.】"></outline>
+					</outline>
+					<outline text="GC日志的参数说明？">
+						<outline text="![](https://gitee.com/mr-peng2333/image-storage/raw/master/img/20211110180737.png)"></outline>
+					</outline>
+					<outline text="内置trace工具的使用？">
+						<outline text="![](https://gitee.com/mr-peng2333/image-storage/raw/master/img/20211110182306.png)"></outline>
+						<outline text="测试程序输出trace信息：执行文件时加上【-trace=&lt;file&gt;】，如：【go test -bench=. -trace=trace.out】"></outline>
+						<outline text="对于生成的文件，使用命令【go tool trace &lt;file&gt;】来可视化查看"></outline>
+					</outline>
+				</outline>
+			</outline>
+			<outline text="高可用性服务设计">
+				<outline text="高效字符串连接">
+					<outline text="Go 1.10前后使用什么连接字符串？">
+						<outline text="前使用【bytes.Buffer】"></outline>
+						<outline text="后使用【strings.Builder】"></outline>
+					</outline>
+				</outline>
+				<outline text="面向错误的设计">
+					<outline text="抵抗错误的方式">
+						<outline text="限流"></outline>
+						<outline text="冗余"></outline>
+						<outline text="隔离"></outline>
+						<outline text="快拒绝而非慢响应：给阻塞操作都加上一个期限"></outline>
+						<outline text="错误传递：断路器，防止错误的传递"></outline>
+					</outline>
+				</outline>
+				<outline text="面向恢复的设计">
+					<outline text="面向恢复的设计？">
+						<outline text="健康检查：注意僵尸进程（池化资源耗尽、死锁）"></outline>
+						<outline text="Let it crash：对于未知错误，这种方式或许是最好的方式"></outline>
+						<outline text="构建可恢复的系统"></outline>
+						<outline text="与客户端协商"></outline>
+					</outline>
+					<outline text="构建可恢复系统的要点？">
+						<outline text="拒绝单体系统"></outline>
+						<outline text="面向错误和恢复的设计：【在依赖服务不可用时，可以继续存活】【快速启动】【无状态】"></outline>
+					</outline>
+				</outline>
+			</outline>
+		</outline>
+	</body>
+</opml>

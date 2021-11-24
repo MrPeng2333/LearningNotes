@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<opml version="1.0">
+	<head>
+		<dateCreated>Thu Nov 04 2021 22:45:52 GMT+0800 (中国标准时间)</dateCreated>
+		<dateModified>Thu Nov 04 2021 22:45:52 GMT+0800 (中国标准时间)</dateModified>
+	</head>
+	<body>
+		<outline text="算法竞赛入门到进阶">
+			<outline text="算法复杂度">
+				<outline text="计算资源">
+					<outline text="衡量算法优劣的两个标准？">
+						<outline text="时间复杂度"></outline>
+						<outline text="空间复杂度"></outline>
+					</outline>
+					<outline text="拿到题目后，第一件事是做什么？">
+						<outline text="分析程序运行需要的计算时间和存储空间"></outline>
+					</outline>
+					<outline text="怎样衡量程序运行的时间效率？">
+						<outline text="使用【clock()】函数统计程序运行时间，这种方式并不合理，因为算法的运行时间依赖于计算机性能"></outline>
+						<outline text="使用程序执行的“次数”来衡量更加合理"></outline>
+					</outline>
+				</outline>
+				<outline text="算法的定义">
+					<outline text="什么是算法？">
+						<outline text="对特定问题求解步骤的描述，是有限的指令序列"></outline>
+					</outline>
+					<outline text="算法的5个特征？">
+						<outline text="输入：有零个或多个输入"></outline>
+						<outline text="输出：有一个或多个输出"></outline>
+						<outline text="有穷性：算法在执行有穷步后结束，每一步在执行有穷时间后结束"></outline>
+						<outline text="确定性：相同的输入只能得到相同的输出"></outline>
+						<outline text="可行性：算法能编程实现"></outline>
+					</outline>
+				</outline>
+				<outline text="算法的评估">
+					<outline text="算法或程序可能的复杂度？">
+						<outline text="多项式复杂度：O(1) &lt; O(n) &lt; O(nlog[2] n) &lt; O(n^k)"></outline>
+						<outline text="指数复杂度：O(2^n) &lt; O(n!)"></outline>
+					</outline>
+				</outline>
+			</outline>
+			<outline text="STL和基本数据结构"></outline>
+			<outline text="搜索技术">
+				<outline text="递归和排列">
+					<outline text="暴力法的有哪些操作？">
+						<outline text="找到所有可能的数据，并用数据结构表示和存储"></outline>
+						<outline text="剪枝。尽量多的排除不符合条件的数据，以减少搜索的空间"></outline>
+						<outline text="用某个算法检索这些数据"></outline>
+					</outline>
+					<outline text="排列组合问题的3中常见情况？">
+						<outline text="打印n个数的全排列，共n!个"></outline>
+						<outline text="打印n个数中任意m个数的全排列"></outline>
+						<outline text="打印n个数中任意m个数的组合"></outline>
+					</outline>
+					<outline text="什么是递归？">
+						<outline text="从算法思想上，递归是把大问题逐步缩小，直到变成最小的同类问题的过程。"></outline>
+						<outline text="递归过程中，大问题和小问题的解决方法完全一样，所以大问题和小问题的程序可以写成一样"></outline>
+						<outline text="从程序上看，一个函数直接调用自己，就形成了递归"></outline>
+					</outline>
+					<outline text="STL库函数【next_permutation()】怎样使用？">
+						<outline text="该函数按字典序输出下一个序列，并将序列存到传入的变量中"></outline>
+						<outline text="使用之前先用【sort()】函数排序，得到最小序列"></outline>
+						<outline text="参数是【起始地址, 结束地址】"></outline>
+					</outline>
+					<outline text="怎样使用递归打印全排列？">
+						<outline text="![](https://gitee.com/mr-peng2333/image-storage/raw/master/img/20210921183135.png)"></outline>
+					</outline>
+					<outline text="怎样递归打印n个数中任意m个数的全排列？">
+						<outline text="![](https://gitee.com/mr-peng2333/image-storage/raw/master/img/20210921183452.png)"></outline>
+					</outline>
+				</outline>
+				<outline text="子集生成和组合问题">
+					<outline text="子集与二进制数的对应关系？">
+						<outline text="每个子集对应一个二进制数，这个二进制数中的每个1都对应这个子集中的某个元素，而且子集中的元素是没有顺序的"></outline>
+					</outline>
+					<outline text="怎样打印所有子集？">
+						<outline text="![](https://gitee.com/mr-peng2333/image-storage/raw/master/img/20210926101451.png)"></outline>
+						<outline text="【&lt;&lt;】二进制左移运算符，将一个运算对象的各二进制位全部左移若干位（左边二进制位丢弃，右边补0）"></outline>
+						<outline text="【&amp;】按位与操作，按二进制位进行“与”运算"></outline>
+					</outline>
+					<outline text="使用怎样的运算方法消除数k的二进制数的最后一个1？">
+						<outline text="【k = k &amp; (k - 1)】"></outline>
+					</outline>
+					<outline text="怎样打印n个数中任意m个数的组合？">
+						<outline text="![](https://gitee.com/mr-peng2333/image-storage/raw/master/img/20210923145815.png)"></outline>
+					</outline>
+				</outline>
+				<outline text="BFS">
+					<outline text="BFS求最短路径适用的情况？">
+						<outline text="相邻点的距离相同"></outline>
+					</outline>
+					<outline text="什么是A*算法？">
+						<outline text="启发式搜索算法，是BFS算法的优化"></outline>
+						<outline text="BFS算法并不会理会目标在哪里，只顾自己乱走，直到遇到目标"></outline>
+						<outline text="A*算法则会判断朝哪里走会更快到达目标，算法中表现为用一个评估函数对当前状态进行评估，得到最好状态，从这这个最好状态继续搜索"></outline>
+						<outline text="简单来说，A*就是“BFS+贪心”"></outline>
+					</outline>
+					<outline text="什么是曼哈顿距离？">
+						<outline text="两个点在标准坐标系上的实际距离，两个点在横向和纵向的距离之和，这个也称为“出租车距离”"></outline>
+					</outline>
+					<outline text="什么是双向广搜？">
+						<outline text="同时在起点和目标点向对方做BFS，将在中间的某个位置遇到，此时就得到了最优路径"></outline>
+					</outline>
+				</outline>
+				<outline text="DFS">
+					<outline text="什么是回溯和剪枝？">
+						<outline text="在递归的时候“看到不对头就撤退”，中途停止扩展并返回。这个思路就是回溯"></outline>
+						<outline text="在回溯中用于减少子节点扩展的函数就是剪枝函数"></outline>
+					</outline>
+					<outline text="什么是迭代加深搜索（IDDFS）？">
+						<outline text="从深度为1开始使用DFS方式搜索，如果没有搜索到答案，则搜索深度加1，如此重复，直到搜索到答案"></outline>
+					</outline>
+					<outline text="什么是IDA＊算法？">
+						<outline text="IDA*可以看成A*算法在IDDFS搜索中的应用"></outline>
+						<outline text="在进行IDDFS的时候，通过估价函数预测出当前的状态，不在继续深入下去，就可以直接返回，不再继续，从而提高效率"></outline>
+					</outline>
+				</outline>
+			</outline>
+			<outline text="高级数据结构">
+				<outline text="并查集">
+					<outline text="什么是并查集及应用场景？">
+						<outline text="主要用于不相交集合的合并问题"></outline>
+						<outline text="一个城市中有n个人，分成不同的帮派；给出一些人的关系，在分析完所有人的关系之后，问有多少帮派，每个人属于哪个帮派。"></outline>
+					</outline>
+					<outline text="并查集简单实现？">
+						<outline text="![](https://gitee.com/mr-peng2333/image-storage/raw/master/img/20211013205501.png)"></outline>
+					</outline>
+					<outline text="合并的优化？">
+						<outline text="![](https://gitee.com/mr-peng2333/image-storage/raw/master/img/20211013102314.png)"></outline>
+					</outline>
+					<outline text="查询的优化（路径压缩）？">
+						<outline text="![](https://gitee.com/mr-peng2333/image-storage/raw/master/img/20211013103232.png)"></outline>
+					</outline>
+				</outline>
+				<outline text="二叉树">
+					<outline text="二叉树的性质？">
+						<outline text="第【i】层最多有【2^(i-1)】个结点"></outline>
+						<outline text="【n】层满二叉树共有【2^n-1】个结点"></outline>
+					</outline>
+				</outline>
+				<outline text="二叉搜索树">
+					<outline text="什么是Treap树？">
+						<outline text="Treap是一个合成词，由Tree和Heap组合而成"></outline>
+						<outline text="二叉搜索树每个结点有一个键值，Treap树在此基础上人为为每个结点添加了一个优先级权值，这棵树满足任意子树上，根结点优先级最大"></outline>
+						<outline text="每个结点的优先级各不相同，就保证了树的形态是惟一的，和元素的插入顺序没有关系"></outline>
+					</outline>
+					<outline text="Treap树的平衡问题？">
+						<outline text="树的形态是依赖于结点的优先级的，配置优先级最简单的办法就是为每个结点随机赋值，虽然不能保证平衡，但是期望的插入、删除、查找的时间复杂度都是【O(lon[2]n)】"></outline>
+					</outline>
+					<outline text="Treap树插入？">
+						<outline text="把node按键值大小插入到合适的子树上"></outline>
+						<outline text="给node随机分配一个优先级，若优先级比父结点高，调整node（左旋、右旋）使其往上走，直至符合要求"></outline>
+						<outline text="![](https://gitee.com/mr-peng2333/image-storage/raw/master/img/20211014131439.png)"></outline>
+					</outline>
+					<outline text="Treap树删除？">
+						<outline text="删除结点x是叶子结点，直接删除"></outline>
+						<outline text="删除结点有两个子结点，找到优先级更大的一个子结点，往相反方向旋转，直至到叶子结点，然后删除"></outline>
+					</outline>
+					<outline text="什么是Splay树？">
+						<outline text="Splay树是一种BST树，它可以把指定结点旋转到指定位置，尤其是旋转到根的位置，旋转后仍然是BST树"></outline>
+					</outline>
+				</outline>
+				<outline text="线段树">
+					<outline text="什么是线段树？">
+						<outline text="![](https://gitee.com/mr-peng2333/image-storage/raw/master/img/20211014170311.png)"></outline>
+						<outline text="线段树是一种用于区间处理的数据结构，用二叉树来构造，树的每个结点代表一条线段[L, R]，L=R是结点是叶子结点，L&lt;R时，结点有两个子结点[L, M]和[M + 1， R]，M=(L + R) / 2"></outline>
+					</outline>
+					<outline text="为什么线段树需要【4n】的空间？">
+						<outline text="【n】为区间长度"></outline>
+						<outline text="当【n=2^k】时，线段树能够构成满二叉树，此时线段树有【k + 1】层，有【2^(k + 1) - 1】个结点，大约等于【2^(k + 1) = 2 * 2^k = 2n】"></outline>
+						<outline text="当【n = 2^k + 1】时，需要在满二叉树的基础上再加一层，这一层（k + 2层）总共能放【2^(k + 1)个结点】，大约又等于【2n】，所以总共加起来有【4n】个结点，这样才能保证线段树不会越界"></outline>
+					</outline>
+					<outline text="怎样构建线段树？">
+						<outline text="![](https://gitee.com/mr-peng2333/image-storage/raw/master/img/20211017155641.png)"></outline>
+						<outline text="![](https://gitee.com/mr-peng2333/image-storage/raw/master/img/20211017161052.png)"></outline>
+					</outline>
+					<outline text="【给指定区间的值全部加v（区间修改）】暴力法分析？">
+						<outline text="直接对这n个数进行操作，每次加v都是【O(n)】的，如果有n次操作，复杂度为【O(n^2)】"></outline>
+						<outline text="采用修改线段树点的方法，对区间的数一个一个进行修改，一个数的修改是【log[2]n】的，区间修改合起来修改为【nlog[2]n】，如果有n次操作，总复杂度为【n^2log[2]n】，比上面一种方法还要差"></outline>
+					</outline>
+					<outline text="【区间修改】lazy-tag方法？">
+						<outline text="修改的是一整块区间时，只对这个线段区间进行整体上的修改，其内部的每个元素内容先不做修改，只有当这部分线段的一致性被破坏时才把变化值传递给子区间"></outline>
+						<outline text="每次区间修改复杂度【log[2]n】，n次操作【nlog[2]n】"></outline>
+					</outline>
+				</outline>
+				<outline text="树状数组">
+					<outline text="树状数组解决的问题？">
+						<outline text="区间问题，特别是区间修改、求区间和"></outline>
+					</outline>
+					<outline text="树状数组实现？">
+						<outline text="![](https://gitee.com/mr-peng2333/image-storage/raw/master/img/20211017165503.png)"></outline>
+						<outline text="令【m = lowbit(x)】，【tree[x]】的值是把【a_x】和它前面m个数相加的结果"></outline>
+					</outline>
+				</outline>
+			</outline>
+			<outline text="基础算法思想">
+				<outline text="贪心法">
+					<outline text="什么是贪心法（思想）？">
+						<outline text="问题的每一个步骤都取当前的最优值，不考虑对后续步骤的影响，在后续步骤中也不更改之前的选择"></outline>
+					</outline>
+					<outline text="为什么贪心法不一定能得到最优解？">
+						<outline text="在【最少硬币问题】中，有两种情形不能得到最优解"></outline>
+						<outline text="一是不能得到最优解：硬币面值【1 2 4 5 6】，支付9元，使用贪心答案【6 + 2 + 1】，最优解【5 + 4】"></outline>
+						<outline text="二是算不出答案：面值【2 3 5】，支付9元，使用贪心无解，最优解【5 + 2 + 2】"></outline>
+					</outline>
+					<outline text="什么样的情形可以使用贪心法求解题目？">
+						<outline text="最优子结构性质：当一个问题的最优解包含其子问题的最优解时，称此问题具有最优子结构性质"></outline>
+						<outline text="贪心选择性质：问题的整体最优解可以通过一系列局部最优的选择来得到"></outline>
+					</outline>
+					<outline text="常见的贪心问题？">
+						<outline text="活动安排问题，又称区间调度问题"></outline>
+						<outline text="区间覆盖问题"></outline>
+						<outline text="最优装载问题"></outline>
+						<outline text="多机调度问题"></outline>
+					</outline>
+					<outline text="计算哈夫曼编码的长度？">
+						<outline text="![](https://gitee.com/mr-peng2333/image-storage/raw/master/img/20211023184859.png)"></outline>
+					</outline>
+					<outline text="什么是模拟退火？">
+						<outline text="模拟退火基于一个物理原理：高温物体降温到常温，温度越高时降温的概率越大（降温更快），温度越低时降温的概率越小（降温更慢）"></outline>
+						<outline text="模拟退火用这种思想进行搜索，进行多次降温（迭代），直到获得一个可行解"></outline>
+						<outline text="迭代过程中，模拟退火随机选择下一个状态，有两种可能：新状态比愿状态优，接收这个新状态；新状态更差，以一定概率接受该状态，这个概率会随着时间的推移逐渐降低"></outline>
+					</outline>
+					<outline text="模拟退火的主要步骤？">
+						<outline text="设置一个初始的温度T"></outline>
+						<outline text="温度下降，状态转移。从当前温度按温度系数下降到下一个温度，在新的温度计算当前状态"></outline>
+						<outline text="如果温度降到设定的温度下界，程序停止"></outline>
+						<outline text="![](https://gitee.com/mr-peng2333/image-storage/raw/master/img/20211023195800.png)"></outline>
+					</outline>
+					<outline text="模拟退火在算法竞赛中的应用？">
+						<outline text="函数最值问题"></outline>
+						<outline text="TSP旅行商问题"></outline>
+						<outline text="最小圆覆盖"></outline>
+						<outline text="最小球覆盖"></outline>
+					</outline>
+				</outline>
+				<outline text="分治法">
+					<outline text="分治发的基本思想？">
+						<outline text="把原问题分成k个较小规模的子问题，对这k个子问题分别求解。"></outline>
+						<outline text="如果子问题不够小，那么把每个子问题在划分为规模更小的子问题"></outline>
+						<outline text="这样一直分解下去，直到问题足够小，很容求出这些小问题的解为止"></outline>
+					</outline>
+					<outline text="能用分治法解决的题目的特征？">
+						<outline text="平衡子问题：子问题的规模大致相同，能把问题划分成大小差不多相等k个子问题，最好k=2。子问题规模相等的处理效率比不相等时高"></outline>
+						<outline text="独立子问题：子问题之间相互独立。这是区别于动态规划算法的根本特征，在动态规划算法中，子问题是相互联系的"></outline>
+					</outline>
+					<outline text="使用分治法的解题步骤？">
+						<outline text="分解：把问题分解成独立的子问题"></outline>
+						<outline text="解决：递归解决子问题"></outline>
+						<outline text="合并：把子问题的结果合并成原问题的解"></outline>
+					</outline>
+				</outline>
+				<outline text="减治法">
+					<outline text="什么是减治法？">
+						<outline text="减治法解题的过程是把原问题分解为小问题，再把小问题分解为更小的问题，直到得到解。规模为n的原问题与分解后较小规模的子问题，他们的解有以下关系"></outline>
+						<outline text="原问题的只存在于其中一个子问题中"></outline>
+						<outline text="原问题的解和其中一个子问题的解之间存在某种对应关系"></outline>
+					</outline>
+					<outline text="减治法的3中情况？（按每次迭代减去规模的大小）">
+						<outline text="减少一个常数。通常为1，比如插入排序、图搜索算法、拓扑排序、生成排列、生成子集等"></outline>
+						<outline text="按比例减少。通常规模减半，比如折半查找"></outline>
+						<outline text="每次减少的规模都不同。查找中位数（用快排）、插值查找、欧几里得算法等"></outline>
+					</outline>
+				</outline>
+			</outline>
+			<outline text="动态规划">
+				<outline text="概念和思想">
+					<outline text="DP的算法思想？">
+						<outline text="DP问题一般是多阶段决策问题，，它把一个复杂问题分解为相对简单的子问题，再一个个解决，最后得到原复杂问题的最优解"></outline>
+						<outline text="这些子问题是前后相关的，并且非常相似，处理方法几乎一样"></outline>
+						<outline text="把前面子问题的计算结果记录为“状态”，并存储在“状态表”中，后面子问题可以直接查找前面得到的状态表，避免了重复计算，极大的减少了计算复杂度"></outline>
+					</outline>
+					<outline text="求解DP问题的步骤？">
+						<outline text="定义状态"></outline>
+						<outline text="状态转移"></outline>
+						<outline text="算法实现"></outline>
+					</outline>
+					<outline text="DP问题分类？">
+						<outline text="线性DP：线性DP有两种方法，即顺推和逆推，常用“表格”来处理状态"></outline>
+						<outline text="非线性DP：例如树形DP，也有两个方向，根到叶、叶到根"></outline>
+					</outline>
+				</outline>
+				<outline text="最优子结构和重叠子问题">
+					<outline text="什么是最优子结构？">
+						<outline text="如果一个问题的最优解包含其子问题的最优解，我们就称此问题具有最优子结构性质"></outline>
+					</outline>
+					<outline text="什么是重叠子问题？">
+						<outline text="如果递归算法反复求解相同的的子问题，我们就称最优化问题具有重叠子问题"></outline>
+					</outline>
+				</outline>
+				<outline text="基础DP">
+					<outline text="最少硬币问题？">
+						<outline text="![](https://gitee.com/mr-peng2333/image-storage/raw/master/img/20211031095044.png)"></outline>
+					</outline>
+					<outline text="最少硬币方案问题？">
+						<outline text="![](https://gitee.com/mr-peng2333/image-storage/raw/master/img/20211031095257.png)"></outline>
+					</outline>
+					<outline text="所有硬币组合问题？">
+						<outline text="![](https://gitee.com/mr-peng2333/image-storage/raw/master/img/20211031095330.png)"></outline>
+					</outline>
+				</outline>
+				<outline text="0/1背包">
+					<outline text="什么是背包问题？">
+						<outline text="有多个物品，重量不同、价值不同，以及一个容量有限的背包，选择一些物品撞到背包中，问怎么装才能使装进背包的物品总价值最大"></outline>
+					</outline>
+					<outline text="背包问题的分类？">
+						<outline text="如果每个物体可以切分，称为一般背包问题，用贪心发求最优解"></outline>
+						<outline text="如果每个物体不可切分，称为0/1背包问题"></outline>
+					</outline>
+					<outline text="线性DP的循环方向？">
+						<outline text="最大值从后往前，最小值从前往后（初步结论）"></outline>
+					</outline>
+					<outline text="滚动数组的优缺点？">
+						<outline text="空间复杂度从O(NV)减少为O(V)"></outline>
+						<outline text="覆盖了中间转移状态，只留下最后状态，无法输出背包的方案"></outline>
+					</outline>
+				</outline>
+				<outline text="LCS and LIS">
+					<outline text="什么是LCS？">
+						<outline text="给定两个序列X和Y，找出X和Y的一个最长公共子序列"></outline>
+						<outline text="子序列和子串是不同的概念，子串的元素在原序列中是连续的"></outline>
+					</outline>
+					<outline text="怎样解决LCS？">
+						<outline text="![](https://gitee.com/mr-peng2333/image-storage/raw/master/img/20211101202115.png)"></outline>
+					</outline>
+					<outline text="什么是LIS？">
+						<outline text="给定一个长度为N的数组，找出一个最长的单调递增子序列"></outline>
+					</outline>
+					<outline text="LIS问题求解（DP）？">
+						<outline text="![](https://gitee.com/mr-peng2333/image-storage/raw/master/img/20211101210428.png)"></outline>
+					</outline>
+				</outline>
+				<outline text="记忆化搜索">
+					<outline text="什么是记忆化搜索？">
+						<outline text="在用递归（一般DP是递推实现的）实现DP时，在递归程序中记录计算过的状态，并在后续的计算中跳过已经算过的重复的状态，从而大大减少递归的计算次数"></outline>
+					</outline>
+				</outline>
+				<outline text="区间DP">
+					<outline text="区间DP的思想？">
+						<outline text="区间DP的主要思想是先在小区间进行DP得到最优解，然后再利用小区间的最优解结合并求大区间的最优解"></outline>
+					</outline>
+					<outline text="区间DP的一般步骤？">
+						<outline text="一般需要从小到大枚举所有可能的区间"></outline>
+						<outline text="在解题时，先解决小区间问题，然后合并小区间，得到更大的区间，直到解决最后的大区间问题"></outline>
+						<outline text="合并的操作一般是把左右两个相邻的子区间合并"></outline>
+					</outline>
+					<outline text="区间DP的两个难点？">
+						<outline text="枚举所有可能的区间"></outline>
+						<outline text="状态转移方程"></outline>
+					</outline>
+					<outline text="区间DP的复杂度？">
+						<outline text="一个长度为n的区间，它的子区间数量级为O(n^2)，每个子区间内部处理时间不确定，合起来时间复杂度会大于O(n^2)"></outline>
+						<outline text="在编程时，区间DP至少需要两层for循环，第1层的i从区间的首部或尾部开始，第2层的j从i开始到结束，i和j一起枚举出所有的子区间"></outline>
+					</outline>
+				</outline>
+			</outline>
+		</outline>
+	</body>
+</opml>
