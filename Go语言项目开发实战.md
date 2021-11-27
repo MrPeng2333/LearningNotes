@@ -40,7 +40,7 @@
 
 #### API接口文档的四种编写方式？
 
-![img](https://static001.geekbang.org/resource/image/91/63/912fe30a70df0866d168ef1c0a50cb63.jpeg?wh=1920*1080)
+##### ![img](https://static001.geekbang.org/resource/image/91/63/912fe30a70df0866d168ef1c0a50cb63.jpeg?wh=1920*1080)
 
 #### API接口文档需要遵循的规范？
 
